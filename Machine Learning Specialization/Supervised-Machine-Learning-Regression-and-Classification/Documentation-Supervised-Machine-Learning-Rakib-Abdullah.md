@@ -188,7 +188,8 @@
 
 - notice the green line(green line came due to the outlier),decision boundary shifted(which should not be)
 
-![alt text](image-26.png)
+<img width="806" alt="image" src="https://github.com/user-attachments/assets/7c124050-602b-408a-9cee-0732e44a6888" />
+
 
 
 ### Logisitic regression
@@ -203,44 +204,53 @@
 
 - sigmoid function is used here
 
-![alt text](image-24.png)
+<img width="806" alt="image" src="https://github.com/user-attachments/assets/d9d03740-5470-475f-9cbc-e3c441a33de4" />
 
-![alt text](image-25.png)
+
+<img width="806" alt="image" src="https://github.com/user-attachments/assets/709f397a-429b-4d02-ad69-60f88f812d9d" />
+
 
 ### Decision Boundary for logistic regression</h3>
 
 - when z=0,it is the decision boundary
 
-![alt text](image-23.png)
+<img width="806" alt="image" src="https://github.com/user-attachments/assets/6fba9e78-63ab-4ca1-9d0e-68da864c14f3" />
+
 
 more example:
 
-![alt text](image-22.png)
+<img width="806" alt="image" src="https://github.com/user-attachments/assets/7afb525a-ab8e-4593-8279-ee6d1ad4f59d" />
+
 
 ### Cost function for logistic regression
 
 - squared error cost is not ideal,because it generates non convex cost function which does not work well in gradient descent due to getting stuck in local optima
 
-![alt text](image-21.png)
+<img width="803" alt="image" src="https://github.com/user-attachments/assets/383a927d-a32a-4f1c-bbe2-dd6b4e5615dd" />
+
 
 ### Visualizing logistic loss function
 
 - the choice of this loss function makes the overall loss function convex
 - when actual y=1
 
-![alt text](image-20.png)
+<img width="806" alt="image" src="https://github.com/user-attachments/assets/85fe96db-3b3e-4d3f-9108-4b9581c0fbdf" />
+
 
 - when actual y=0
 
-![alt text](image-19.png)
+<img width="806" alt="image" src="https://github.com/user-attachments/assets/78f22240-3333-4586-b275-b1ca3a94dcd9" />
+
 
 ### Simplified Loss function
 
-![alt text](image-18.png)
+<img width="806" alt="image" src="https://github.com/user-attachments/assets/f123d664-e6ee-480c-98df-592ae78d2c7b" />
+
 
 ### Gradient Descent for logistic Regression
 
-![alt text](image-17.png)
+<img width="804" alt="image" src="https://github.com/user-attachments/assets/55603e30-8a4c-4f3c-bb1e-517e5e704635" />
+
 
 ### The problem of overfitting
 
@@ -256,13 +266,15 @@ more example:
 - regularization (for example reduce the size of parameters)
 - modified cost function with regularization
 
-![alt text](image-16.png)
+<img width="804" alt="image" src="https://github.com/user-attachments/assets/27ac5db4-3187-4e9e-bdd9-d2c1c14036b5" />
+
 
 ### The intution behind modified cost function with regularization
 
 - reducing the value of w3 and w4 weights
 
-![alt text](image-13.png)
+<img width="804" alt="image" src="https://github.com/user-attachments/assets/73c26dab-5ada-4ddd-83f6-34b662619128" />
+
 
 - at first we don't know which features are important,so at the beginning we penalize all the 
   weights a little
@@ -272,24 +284,30 @@ more example:
 
 - increasing lamda will decreases the value of weights
 
-![alt text](image-14.png)
+<img width="804" alt="image" src="https://github.com/user-attachments/assets/1e9af2b4-a4b7-4844-a07e-65f662a7809b" />
 
-![alt text](image-15.png)
+
+<img width="804" alt="image" src="https://github.com/user-attachments/assets/84d91a2b-153c-4924-8f48-9f530c277615" />
+
 
 
 ### Regularized Linear Regression
 
-![alt text](image-12.png)
+<img width="804" alt="image" src="https://github.com/user-attachments/assets/bfdefb08-f222-4aee-8c5b-f3337f95f023" />
+
 
 ### Regularized Logistic Regression
 
-![alt text](image-11.png)
+<img width="804" alt="image" src="https://github.com/user-attachments/assets/5f60c1a1-8c4a-4603-ae13-d47ac7223ea8" />
 
-![alt text](image-10.png)
+
+<img width="804" alt="image" src="https://github.com/user-attachments/assets/fe07ca20-66e6-472b-9427-6dc19f37b2f8" />
+
 
 ### Why to use DT or not
 
-![alt text](image-9.png)
+<img width="804" alt="image" src="https://github.com/user-attachments/assets/a57262fc-505b-4b96-a386-bbd0625737c8" />
+
 
 
 
