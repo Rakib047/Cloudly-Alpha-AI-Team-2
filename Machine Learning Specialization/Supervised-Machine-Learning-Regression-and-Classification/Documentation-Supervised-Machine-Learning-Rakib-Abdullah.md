@@ -63,7 +63,11 @@
 
 - cost function visualization
 
-<img width="806" alt="image" src="https://github.com/user-attachments/assets/4e246335-3551-4d02-baa8-7bd9f644601f" />
+<img width="804" alt="image" src="https://github.com/user-attachments/assets/64330c49-4e63-4e30-8c38-f0a4c7a2b2d3" />
+<img width="804" alt="image" src="https://github.com/user-attachments/assets/f9aa6452-283c-4654-ba96-ae051f51ebcf" />
+
+<img width="804" alt="image" src="https://github.com/user-attachments/assets/4444ef01-0b82-4633-87c2-bcab611ec8da" />
+
 
 
 ### Contour Plot
