@@ -1,4 +1,4 @@
-# Week 1
+<img width="806" alt="image" src="https://github.com/user-attachments/assets/9bfcf46e-70a1-417c-8e0b-9654019d6aaf" /># Week 1
 ### What is machine learning
 
 - Supervised Learning 
@@ -38,7 +38,8 @@
 - finding structure or pattern in the data
 - only x given,no y
 
-![alt text](image-4.png)
+<img width="789" alt="image" src="https://github.com/user-attachments/assets/e48ac5ec-402a-4547-9448-4ccc8e2496ed" />
+
 
 ### Regression Model
 
@@ -54,18 +55,21 @@
 
 - function of parameters
 
-![alt text](image-5.png)
+<img width="794" alt="image" src="https://github.com/user-attachments/assets/00ec62c1-a1a6-4b9e-9cb1-cc2ca647b7a2" />
+
 
 
 ![alt text](image-6.png)
 
 - cost function visualization
 
-![alt text](image-7.png)
+<img width="806" alt="image" src="https://github.com/user-attachments/assets/4e246335-3551-4d02-baa8-7bd9f644601f" />
+
 
 ### Contour Plot
 
-![alt text](image-8.png)
+<img width="795" alt="image" src="https://github.com/user-attachments/assets/c3138e2b-61b2-4335-bc29-d0c8afd82913" />
+
 
 ### Gradient Descent
 
@@ -75,7 +79,8 @@
 
 ### The algorhtm and some mistakes 
 
-![alt text](image-27.png)
+<img width="811" alt="image" src="https://github.com/user-attachments/assets/2716374d-72e9-46e2-99ae-fd929891a93b" />
+
 
 ### The learning rate and derivative term intution
 
@@ -88,11 +93,13 @@
 
 - Near a local minimum,the derivative gets smaller and smaller as well as closer to zero,therefore,the updates becomes smaller and smaller again
 
-![alt text](image-28.png)
+<img width="806" alt="image" src="https://github.com/user-attachments/assets/2effa1db-fbc7-46cc-a47c-f6a67a4b6e3d" />
+
 
 ### Gradient descent algorithm for linear regression
 
-![alt text](image-29.png)
+<img width="806" alt="image" src="https://github.com/user-attachments/assets/506ca540-4f38-4408-92ec-3bb338609941" />
+
 
 - Batch Gradient Descent : taking all examples for at each step of GD
 
@@ -107,11 +114,13 @@
 
 ### Gradient Descent for multiple Linear Regression 
 
-![alt text](image-30.png)
+<img width="806" alt="image" src="https://github.com/user-attachments/assets/9dbf0c0c-e7fe-44d7-87f9-d9d92c5b85af" />
+
 
 **Final Form** : 
 
-![alt text](image-31.png)
+<img width="806" alt="image" src="https://github.com/user-attachments/assets/3e11a2d6-a1e0-4dc1-9eca-206ea62094f5" />
+
 
 ### Gradient Descend in Practice 
 
@@ -120,33 +129,38 @@
 - fast and smooth gradient descent
 - 1st contuour->not good updates,but 2nd good
 
-![alt text](image-32.png)
+<img width="806" alt="image" src="https://github.com/user-attachments/assets/29b3ab89-53ba-4d20-9133-ddf169f6a6df" />
+
 
 ### Feature Scaling
 
 - by dividing max value
 
-![alt text](image-33.png)
+<img width="806" alt="image" src="https://github.com/user-attachments/assets/80cfefdc-c74a-415a-abb9-85a48e08aff9" />
+
 
 - mean normalization
 
-![alt text](image-34.png)
+<img width="806" alt="image" src="https://github.com/user-attachments/assets/096e898b-64ce-4b67-b619-81d95b88400a" />
+
 
 - Z-score normalization
 
-![alt text](image-35.png)
+<img width="806" alt="image" src="https://github.com/user-attachments/assets/56f53c5b-7723-4300-a316-3b4e8dc8354c" />
 
 ### Rule of Thumb 
 
 - Feature scaling actually helps fast gradient descent
 
-![alt text](image-36.png)
+<img width="797" alt="image" src="https://github.com/user-attachments/assets/a2c68716-3c03-4282-a0bb-0d9e69dca192" />
+
 
 ### Making sure whether gradient descent is working or not
 
 - we need to check whether loss function is decreasing or increasing or reached convergence
 
-![alt text](image-37.png)
+<img width="809" alt="image" src="https://github.com/user-attachments/assets/8c2078ac-0236-441f-ab4d-b78be2beb185" />
+
 
 ### How to choose learning rate
 
@@ -154,15 +168,18 @@
 - choose small one,but this can slow down convergence
 - increase learning rate step by step
 
-![alt text](image-38.png)
+<img width="806" alt="image" src="https://github.com/user-attachments/assets/54d45c3c-8577-4e59-a7ef-cd00ad1c5779" />
+
 
 ### Feature Engineering 
 
-![alt text](image-39.png)
+<img width="806" alt="image" src="https://github.com/user-attachments/assets/f8c2e031-80c2-44ed-af43-e6e983e761d5" />
+
 
 ### Polynomial regression 
 
-![alt text](image-40.png)
+<img width="818" alt="image" src="https://github.com/user-attachments/assets/2bcb962c-560b-4f60-ab83-50e8bfc1dd6c" />
+
 
 
 # Week 3
