@@ -1,4 +1,4 @@
-<img width="806" alt="image" src="https://github.com/user-attachments/assets/9bfcf46e-70a1-417c-8e0b-9654019d6aaf" /># Week 1
+# Week 1
 ### What is machine learning
 
 - Supervised Learning 
