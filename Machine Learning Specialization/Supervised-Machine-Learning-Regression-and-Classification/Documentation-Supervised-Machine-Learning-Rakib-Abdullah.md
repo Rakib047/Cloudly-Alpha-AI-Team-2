@@ -19,7 +19,8 @@
 - for continous value mapping
 - infinite range of possible outputs
 
-![alt text](image-3.png)
+<img width="806" alt="image" src="https://github.com/user-attachments/assets/7990c0a8-8aa2-46aa-9a42-ee33c8403225" />
+
 
 ### Unsupervised Learning
 
