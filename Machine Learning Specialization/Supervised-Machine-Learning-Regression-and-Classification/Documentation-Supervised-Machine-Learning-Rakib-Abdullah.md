@@ -59,7 +59,8 @@
 
 
 
-![alt text](image-6.png)
+<img width="495" alt="image" src="https://github.com/user-attachments/assets/8e9f7790-bf9c-4683-9815-8b23d9f659e9" />
+
 
 - cost function visualization
 
