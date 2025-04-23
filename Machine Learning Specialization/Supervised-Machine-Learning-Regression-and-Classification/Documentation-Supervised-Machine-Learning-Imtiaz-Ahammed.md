@@ -22,7 +22,7 @@ Classification is type of supervised learning algorithm that tries to classify d
 1. Binary Classification(0/1)
 2. Multi-Class Classification(1/2/3...) 
 
-![alt text](image.png)
+![CLassification Visualization](![image](https://github.com/user-attachments/assets/6b8df260-275f-41b0-ac46-b10250970474)
 
 This represents a classification task which mainly differentiate between two cancer classes
 
@@ -58,19 +58,19 @@ y = output/target variable
 
 y_hat = Output/Prediction of model
 
-![alt text](image-1.png)
+![alt text](![image-1](https://github.com/user-attachments/assets/42bc1207-2f3c-417a-a3ea-706fbac9c2a9)
 
-![Linear Regression with 1 variable](image-2.png)
+![Linear Regression with 1 variable](![image-2](https://github.com/user-attachments/assets/d4c162b9-4017-466e-b298-f52546f9a55b)
 
 # Cost Function 
 It is used to measure the performance or error of a model. It is also known as Squared Error Cost Function. Cost function is denoted as J(w,b) which is function of w, b. It tries to find difference between the actual values and the predicted values from mode.
 
-![Cost Function J](image-3.png)
-![alt text](image-4.png)
+![Cost Function J](![image-3](https://github.com/user-attachments/assets/d5ad22fd-0051-4d3d-8c13-43520f8dce66)
+![alt text](![image-4](https://github.com/user-attachments/assets/8108759f-1e0e-4d60-ada6-5f6c68a9b3b7)
 
 The cost function tries to minimize the error value as low as possible to find the best fit model.
 
-![3D Plot of Cost Function](image-5.png)
+![3D Plot of Cost Function](![image-5](https://github.com/user-attachments/assets/6f982bf5-6416-42a3-8f81-97df46ac5c96)
 
 This plot shows the cost function with respect to w and b on the x and y axis respectively. On the z axis there is the output of the function J(w,b). While model training the goal of the model is to minimize the cost function.
 
@@ -86,11 +86,11 @@ Basic Steps of Gradient Descent:
 * Calculate output of the cost function.
 * Adjust the cost function to reduce the output of cost function until we find or settle at near minimum
 
-![Parameters Update in Gradient Descent](image-6.png)
+![Parameters Update in Gradient Descent](![image-6](https://github.com/user-attachments/assets/0310525c-5859-4608-b917-362b36eb94ec)
 
-![Finding Minima Using Gradient Descent](image-7.png)
+![Finding Minima Using Gradient Descent](![image-7](https://github.com/user-attachments/assets/e4e44533-a290-4949-8350-b31ed73aaaba)
 
-![Equation related to Linear Regression](image-8.png)
+![Equation related to Linear Regression](![image-8](https://github.com/user-attachments/assets/355839f1-6a13-4cac-a5c3-ebd7a26b045d)
 
 
 Type of Gradient Descent:
@@ -112,7 +112,8 @@ X = [X1 X2 X3 .... Xn]
 
 Here, W is a vector that contains multiple weights as  vectors. Same goes for X as well.
 
-![Function Equation with code](image-9.png)
+![Function Equation with code](![image-9](https://github.com/user-attachments/assets/9694eb33-bab8-4be6-a967-22ec1aff66d3)
+
 
 ```python 
 #without vectorization
@@ -128,7 +129,8 @@ f = np.dot(w*x)+b
 ```
 This will do the element wise dot product of w and x. It is more efficient compared to the previous one. 
 
-![vector process](image-10.png)
+![vector process](![image-10](https://github.com/user-attachments/assets/da82fec4-48c3-4bda-b6a0-c892aa508e8c)
+
 
 # Vector Implementation of Gradient Descent
 
@@ -139,7 +141,7 @@ Array operations specially vector operations can run faster compared to normal o
 for j in range (0, 15)
 f=f+w[j]*x[j]
 ```
-![alt text](image-11.png)
+![alt text](![image-11](https://github.com/user-attachments/assets/11fb9190-cfbb-4cdc-9474-b6caf625ee33)
 
 # Alternative to Gradient Descent
 Normal equation is an alternative to gradient descent. 
