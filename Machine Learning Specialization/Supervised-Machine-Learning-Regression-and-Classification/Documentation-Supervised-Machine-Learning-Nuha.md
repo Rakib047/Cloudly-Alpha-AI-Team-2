@@ -10,7 +10,7 @@ While in regression algorithms output numbers from numerical inputs, in classifi
 
 # Unsupervised Learning
 
-Unsupervised ### learning doesn't provide labels with each input data for the model to learn from. Instead the algorithm learns patterns and identifies different categories or groups present in the data and cluster them. So, next time when it encounters an unseen data, the algorithm compares it with the existing groups or clusters and recognize it as the cluster it is closed to in terms of patterns. 
+Unsupervised learning doesn't provide labels with each input data for the model to learn from. Instead the algorithm learns patterns and identifies different categories or groups present in the data and cluster them. So, next time when it encounters an unseen data, the algorithm compares it with the existing groups or clusters and recognize it as the cluster it is closed to in terms of patterns. 
 
 Another type of unsupervised learning is anomaly detection, where unusal activities are detected.
 
@@ -38,5 +38,7 @@ The main goal of linear regression is to find the paramaters that will result in
 
 
 ![Cost Function](images/cost_function_3.png)
+
+
 
 
