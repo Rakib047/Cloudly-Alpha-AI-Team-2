@@ -339,6 +339,107 @@ Remember this code is not using tensorFlow pipelines
 
 <img width="713" alt="image" src="https://github.com/user-attachments/assets/c461b8a3-fb8e-4847-b841-3868d406edff" />
 
+# Week 4
+## Decision Tree Model
+
+<img width="713" alt="image" src="https://github.com/user-attachments/assets/7f800d94-8c5c-40a1-b4ff-a9d86d6d0e44" />
+
+
+- This is an example of Decision tree,there can be many other combinations,our goal is to pick a decision tree
+
+## How a decision Tree learns
+
+<img width="713" alt="image" src="https://github.com/user-attachments/assets/b9a11095-e9c0-412f-af09-133fe3c820be" />
+
+
+<img width="713" alt="image" src="https://github.com/user-attachments/assets/07cc5c1e-4d35-45f9-a2ef-05829fa5320f" />
+
+
+## Entropy as a measure of impurity</h3>
+
+- the higher the value of entropy,the higher the impurity
+
+<img width="713" alt="image" src="https://github.com/user-attachments/assets/6aedf2e3-0de1-4abe-869b-db66e26ffe29" />
+
+
+## The formula
+
+<img width="715" alt="image" src="https://github.com/user-attachments/assets/fd75ebc0-23f4-4bd4-b520-d7c723cf980c" />
+
+
+## Choosing what feature to choose during splitting,we use information gain</h4>
+
+- ig indicates the reduction of entropy
+
+<img width="713" alt="image" src="https://github.com/user-attachments/assets/644f6d09-ae58-436f-9934-a52307be38b9" />
+
+
+## Decision Tree Learning Summary
+
+<img width="713" alt="image" src="https://github.com/user-attachments/assets/4a77743f-9ca8-4432-b920-894e97e4afda" />
+
+
+## One hot encoding</h3>
+
+<img width="713" alt="image" src="https://github.com/user-attachments/assets/27c6cbe8-cbd8-4b80-9c72-152a8881de84" />
+
+
+## Splitting for continuous value
+
+- try out different values,check which one gives the highest information gain
+
+<img width="713" alt="image" src="https://github.com/user-attachments/assets/3e48de77-2db0-419a-9f8b-13bf683e7b95" />
+
+
+## Regression using DT
+
+- we will choose that node that reduces variance the most
+
+<img width="713" alt="image" src="https://github.com/user-attachments/assets/f40fea04-b28e-40f2-84c9-e9485dfb8fd5" />
+
+
+
+## Tree Ensemble
+
+- DT are highly sensitive to small changes of data
+
+- here in the below picture we use 3 tree combined and used majority voting
+
+<img width="713" alt="image" src="https://github.com/user-attachments/assets/857475c8-9319-45bf-a660-10c5701981a9" />
+
+
+## Sampling with replacement
+
+- some examples may repeat multiple times
+- some examples may not even come for a single time in the training set
+- for example given a dataset with 10 examples,place it in a virtual bag,create another training set of 10 examples by sampling with replacement
+ 
+<img width="713" alt="image" src="https://github.com/user-attachments/assets/7838398f-ecad-41a5-a9f6-390152f69f48" />
+
+
+## Random Forest
+
+- build a training set with sampling with replacement..then train a DT on that set,do this process for example 100 times....this is the main thing
+
+- for further randomization,instead of selecting from all features for node,we select one from random k features as our feature of choice
+
+this is the core concept of random forest algorithm
+
+## Boosted Decision Tree(XGBoost->Extreme gradient boosting)</h3>
+
+- focus on more on misclassified examples
+
+<img width="713" alt="image" src="https://github.com/user-attachments/assets/ead1bce2-5947-4138-baef-3ffdecb6aaab" />
+
+
+### Why XGBoost
+
+- fast,open sourced,good choice of default splitting criteria and criteria for when to stop
+- built in regularization to prevent overfitting
+
+<img width="709" alt="image" src="https://github.com/user-attachments/assets/579cdbfa-a845-4731-87df-75d6e5f81e7d" />
+
+
 
 
 
