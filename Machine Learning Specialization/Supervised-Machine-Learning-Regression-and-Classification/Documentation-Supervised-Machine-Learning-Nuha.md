@@ -46,14 +46,16 @@ cost function gets minimized. The image below shows the cost function while sett
 
 Gradient Descent helps to minimize the cost function more systematically. 
 
-*gradient_descent_1
+![gradient_descent_1](https://github.com/user-attachments/assets/10c68b66-4d7c-4642-bddc-99cfaf13b2dd)
 
 - **Gradient Descent Update Rule**  
+
   - `w ← w - α * ∂J/∂w(w,b)`  
   - `b ← b - α * ∂J/∂b(w,b)`  
   - Each step adjusts parameters by moving “downhill” on the cost surface.
 
-*truth_assertion
+
+![truth_assertion](https://github.com/user-attachments/assets/90c31f08-4a53-49aa-9316-ced9cca55a41)
 
 - **Learning Rate (α)**  
   - A small positive scalar (e.g. `0.01`).  
@@ -215,8 +217,6 @@ Gradient Descent helps to minimize the cost function more systematically.
   - “Batch” ⇒ each update uses **all** training examples (sum over $i=1\ldots m$).  
   - Contrast: other variants use subsets (mini‑batch or stochastic).
 
-- **Why “Batch”?**  
-  - Name originates from taking the entire data “batch” each step.  
-  - Inspired DeepLearning.AI’s newsletter “The Batch.”
+
 
 
