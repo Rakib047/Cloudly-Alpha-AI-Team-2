@@ -176,11 +176,12 @@ Feature Scaling Techniques:
 
 1. Mean Normalization: It is also known as min-max scaling. It transform the features from range -1 to 1.
 
-![equation (1)](https://github.com/user-attachments/assets/19a8b1a5-f6e3-4b91-bd8c-7c3db0a008e4)
+![equation (1)](https://github.com/user-attachments/assets/be88af6c-c7b9-4927-97be-1b4371d729b9)
+
 
 2. Z Score Normalization: It transforms the feature such that they have mean = 0 and standard deviation of 1. 
 
-![equation](https://github.com/user-attachments/assets/51d03527-131b-464b-8a63-6cf5e5754ac8)
+![equation](https://github.com/user-attachments/assets/eacd40cc-8c62-42af-9426-a5d493b2340f)
 
 
 ## Learning Curve
@@ -257,8 +258,7 @@ For 2 features along with 2 class the equation will be as following
 * At point *z = 0* the model will be neutral.
 * If *w1 = w2 = 1* and *b=-3*, then the equation will be as following:
   
-![image-19](https://github.com/user-attachments/assets/bc77e905-a5e4-494e-943e-c42f03cdd431)
-
+![image-19](https://github.com/user-attachments/assets/2ed699d4-0875-4d80-8289-f8421154f356)
 
 If we plot the decision boundary to visualize how it works we can see that 1 linear line is separating both classes.
 
