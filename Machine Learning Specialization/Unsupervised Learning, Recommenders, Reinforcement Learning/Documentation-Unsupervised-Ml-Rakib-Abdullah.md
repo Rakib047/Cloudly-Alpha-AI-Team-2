@@ -144,10 +144,73 @@ for the above figure
 
 <img width="566" alt="image" src="https://github.com/user-attachments/assets/859bb3ed-8f36-4369-adbd-7838c0df62b1" />
 
+# Week 2
+## Collaborative Filtering Algorithm
+
+- mutiple users have given rating to movies,from that we can derive what features those movies have
+
+### An example Recommender System (User rating prediction for movies)
+![alt text](image-61.png)
+
+- Adapting the model with linear regression model for each of the user.Basically here for each user there is a linear regression model we are using
+
+- fetures her are romance and action,using these features we are predicting movie rating
+
+![alt text](image-62.png)
+
+***notations***
+
+![alt text](image-63.png)
+
+- our goal and cost function,the below cost funtion is for one user
+
+![alt text](image-64.png)
+
+- after little modification and also for all user,the cost function of individual and for all users : 
+
+![alt text](image-65.png)
 
 
+## Guessing the features value if parameters are given(we assume)
 
+![alt text](image-66.png)
 
+- Now if we combine them:
 
+![alt text](image-67.png)
 
+### Gradient descent for this cost function
 
+![alt text](image-68.png)
+
+## Binary Classification using collaborative filtering
+
+### Example
+
+![alt text](image-69.png)
+
+![alt text](image-70.png)
+
+## from regression to binary classification
+
+![alt text](image-71.png)
+
+### Cost funtion for binary classification using collaborative filtering
+
+![alt text](image-72.png)
+
+## Recommender Systems Implementation
+
+### Mean Normalization
+
+![alt text](image-73.png)
+
+![alt text](image-74.png)
+
+## How we want related items in websites
+
+![alt text](image-75.png)
+
+## Limitations of Collaborative filtering
+
+![alt text](image-76.png)
