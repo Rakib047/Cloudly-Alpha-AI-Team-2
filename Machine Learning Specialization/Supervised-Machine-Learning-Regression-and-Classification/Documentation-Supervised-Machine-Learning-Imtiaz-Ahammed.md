@@ -25,7 +25,8 @@ Classification is type of supervised learning algorithm that tries to classify d
 1. Binary Classification(0/1)
 2. Multi-Class Classification(1/2/3...) 
 
-![alt text](image.png)
+![alt text](![image](https://github.com/user-attachments/assets/ac628097-422c-4248-86af-742bc139f99b)
+)
 
 This represents a classification task which mainly differentiate between two cancer classes
 
@@ -60,19 +61,23 @@ y = output/target variable
 
 y_hat = Output/Prediction of model
 
-![alt text](image-1.png)
+![alt text](![image-1](https://github.com/user-attachments/assets/9b0ac277-fe97-4146-a06c-f00b7220f00b)
+)
 
-![Linear Regression with 1 variable](image-2.png)
+![Linear Regression with 1 variable](![image-2](https://github.com/user-attachments/assets/5ebfbfc4-a486-4129-9c40-0dc7574b9e2e)
 
 ## Cost Function 
 It is used to measure the performance or error of a model. It is also known as Squared Error Cost Function. Cost function is denoted as *J(w,b)* which is function of w, b. It tries to find difference between the actual values and the predicted values from mode.
 
-![Cost Function J](image-3.png)
-![alt text](image-4.png)
+![Cost Function J](![image-3](https://github.com/user-attachments/assets/9dac780b-3813-4684-9606-e30cff5fe331)
+
+![alt text](![image-4](https://github.com/user-attachments/assets/d5926cc1-7a4d-4f6e-bb05-a4106b051f70)
+
 
 The cost function tries to minimize the error value as low as possible to find the best fit model.
 
-![3D Plot of Cost Function](image-5.png)
+![3D Plot of Cost Function](![image-5](https://github.com/user-attachments/assets/b0da9e1b-02c7-47e3-9c94-9887dd9736e2)
+
 
 This plot shows the cost function with respect to w and b on the x and y axis respectively. On the z axis there is the output of the function J(w,b). While model training the goal of the model is to minimize the cost function.
 
@@ -88,11 +93,13 @@ Basic Steps of Gradient Descent:
 * Calculate output of the cost function.
 * Adjust the cost function to reduce the output of cost function until we find or settle at near minimum
 
-![Parameters Update in Gradient Descent](image-6.png)
+![Parameters Update in Gradient Descent](![image-6](https://github.com/user-attachments/assets/47e8f3ba-dee5-407b-8101-60602c00c70d)
 
-![Finding Minima Using Gradient Descent](image-7.png)
 
-![Equation related to Linear Regression](image-8.png)
+![Finding Minima Using Gradient Descent](![image-7](https://github.com/user-attachments/assets/4e7be670-c0e0-49ca-8ff3-77c38a3fed8a)
+
+
+![Equation related to Linear Regression](![image-8](https://github.com/user-attachments/assets/190d78a2-a0b7-4878-a20a-a2aaa500ed2f)
 
 
 Type of Gradient Descent:
@@ -116,7 +123,8 @@ In multiple linear regression we have multiple features like *X1, X2, X3* and so
 
 Here, W is a vector that contains multiple weights as  vectors. Same goes for X as well.
 
-![Function Equation with code](image-9.png)
+![Function Equation with code](![image-9](https://github.com/user-attachments/assets/c5af3593-685a-463b-8f4e-fd7cc14951d7)
+
 
 ```python 
 #without vectorization
@@ -132,7 +140,8 @@ f = np.dot(w*x)+b
 ```
 This will do the element wise dot product of **w* and *x*. It is more efficient compared to the previous one. 
 
-![vector process](image-10.png)
+![vector process](![image-10](https://github.com/user-attachments/assets/d0ab1448-9bd9-47ae-8ba1-c7e51801a2c0)
+
 
 ## Vector Implementation of Gradient Descent
 
@@ -143,7 +152,8 @@ Array operations specially vector operations can run faster compared to normal o
 for j in range (0, 15)
 f=f+w[j]*x[j]
 ```
-![alt text](image-11.png)
+![alt text](![image-11](https://github.com/user-attachments/assets/3005771d-c323-4740-87c3-6ed589dc2e47)
+
 
 ## Alternative to Gradient Descent
 Normal equation is an alternative to gradient descent. 
@@ -167,16 +177,18 @@ Feature Scaling Techniques:
 
 1. Mean Normalization: It is also known as min-max scaling. It transform the features from range -1 to 1.
 
-![Formula for Standardization=](<equation (1).png>)
+![Formula for Standardization=](![equation (1)](https://github.com/user-attachments/assets/19a8b1a5-f6e3-4b91-bd8c-7c3db0a008e4)
 
 2. Z Score Normalization: It transforms the feature such that they have mean = 0 and standard deviation of 1. 
 
-![Formula for Z Score](equation.png)
+![Formula for Z Score](![equation](https://github.com/user-attachments/assets/51d03527-131b-464b-8a63-6cf5e5754ac8)
+
 
 ## Learning Curve
 It helps to understand how well our gradient descent algorithm is performing. To plot this curve we need to calculate the value of cost function after each iteration. If the Gradient Descent algorithm converges that means the graph will converge near to x axis with increase in iteration.
 
-![alt text](image-12.png)
+![alt text](![image-12](https://github.com/user-attachments/assets/a8334314-7179-41ce-a08b-105017a22330)
+
 
 ## Automatic Convergence Test
 Let's take a number 0.001. If the cost function J(w,b) decreases by less than or equal 0.001 in one iteration, then we can say the model is converging. That means the cost function has found parameters to get close to global minima.
@@ -187,7 +199,8 @@ It is most important task in machine learning while preparing the dataset for mo
 ## Polynomial Regression
 It is a advance version of linear regression that uses higher order variable for fitting curved instead of straight line. The equation for polynomial regression can be described as following:
 
-![alt text](image-13.png)
+![alt text](![image-13](https://github.com/user-attachments/assets/c1a53014-31bc-4c03-b5cd-37609d445d0a)
+
 
 The term n decides the number of features to be fitted. It can vary based on dataset and requirements.Compared to only x it converts the feature power raise to n.
 
@@ -201,7 +214,8 @@ Even if we use threshold for example:
 
 It will work well on dataset that can be separable linearly means the 2 classes can be separated using a straight line. But, as we know the output of the regression can be anything so threshold method will to classify the 2 classes.
    
-![alt text](image-14.png)
+![alt text](![image-14](https://github.com/user-attachments/assets/70fefb41-97c4-4c3a-8650-089e41670fa0)
+
 
 ## Logistic Regression
 As we have seen the Linear Regression or any other regression model output is a discrete number. So it become difficult to classify in between 2 class.Even the structure or the distribution of the dataset might force the model to perform bad while classifying the classes. 
@@ -210,14 +224,15 @@ So, we need something which output will be always in between 0/1 no matter. To d
 
 ## Sigmoid Function
 
-![Sigmoid Function](image-15.png)
+![Sigmoid Function](![image-15](https://github.com/user-attachments/assets/dfcbf87d-b401-47f1-92ab-07e68dacdde3)
+
 
 This is an exponential function which limits the output in between 0 to 1.
 * When z is large positive number the output of g(z) is very close to 1.
 * When z is large negative number the output of g(z) is very close to 0.
 * When z=0, the output of g(z) is 0.5
 
-![Logistic Regression Algorithm](image-16.png)
+![Logistic Regression Algorithm](![image-16](https://github.com/user-attachments/assets/cd51f1a8-34d6-452f-a245-62e0b4c8f984)
 
 The above equation depicts how the linear regression model can be utilized for Binary Classification Task using the sigmoid function. The output of g(z) will always e in between 0 to 1.
 
@@ -226,7 +241,8 @@ The output of the sigmoid function along with linear regression can be interpret
 * On the other hand, it also means that the probability for the given input to be negative class 1 is 30.
 
 The probability of class 1/2 can be expressed as following:
-![Log Reg Probability Eqn](image-17.png)
+![Log Reg Probability Eqn](![Uploading image-17.png…]()
+
 The equation means that probability of y to be class 1, given input x, parameters w and b.
 
 ## Decision Boundary for Classification
