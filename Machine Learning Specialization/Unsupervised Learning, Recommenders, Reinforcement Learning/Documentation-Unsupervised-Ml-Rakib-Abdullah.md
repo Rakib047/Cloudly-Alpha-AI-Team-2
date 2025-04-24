@@ -150,67 +150,82 @@ for the above figure
 - mutiple users have given rating to movies,from that we can derive what features those movies have
 
 ### An example Recommender System (User rating prediction for movies)
-![alt text](image-61.png)
+<img width="645" alt="image" src="https://github.com/user-attachments/assets/1e3b8c40-2d4e-4224-bd0e-b75a4cd4bb2a" />
+
 
 - Adapting the model with linear regression model for each of the user.Basically here for each user there is a linear regression model we are using
 
 - fetures her are romance and action,using these features we are predicting movie rating
 
-![alt text](image-62.png)
+<img width="645" alt="image" src="https://github.com/user-attachments/assets/3b5f6f8d-a517-402f-b2ee-303449132dcf" />
+
 
 ***notations***
 
-![alt text](image-63.png)
+<img width="645" alt="image" src="https://github.com/user-attachments/assets/eec6d2e8-9f48-4713-9610-4d71a1e1f125" />
+
 
 - our goal and cost function,the below cost funtion is for one user
 
-![alt text](image-64.png)
+<img width="645" alt="image" src="https://github.com/user-attachments/assets/1f4db3e6-0e17-45be-8971-36837d50464c" />
+
 
 - after little modification and also for all user,the cost function of individual and for all users : 
 
-![alt text](image-65.png)
+<img width="645" alt="image" src="https://github.com/user-attachments/assets/ca5598bc-b3a3-46e7-9bc5-e64229458d1b" />
+
 
 
 ## Guessing the features value if parameters are given(we assume)
 
-![alt text](image-66.png)
+<img width="645" alt="image" src="https://github.com/user-attachments/assets/5dacd2a0-7225-4130-ac50-3e893dad6376" />
+
 
 - Now if we combine them:
 
-![alt text](image-67.png)
+<img width="649" alt="image" src="https://github.com/user-attachments/assets/c2b2b4a2-7298-4bd3-bc13-05759f7125ec" />
+
 
 ### Gradient descent for this cost function
 
-![alt text](image-68.png)
+<img width="651" alt="image" src="https://github.com/user-attachments/assets/d8fc9775-8100-4aab-a889-3155186287f2" />
+
 
 ## Binary Classification using collaborative filtering
 
 ### Example
 
-![alt text](image-69.png)
+<img width="645" alt="image" src="https://github.com/user-attachments/assets/a4acf1e1-ae50-4f80-bcb8-2b4485e2fd2e" />
 
-![alt text](image-70.png)
+
+<img width="645" alt="image" src="https://github.com/user-attachments/assets/b941d77c-2e1b-4aae-9980-d381f9cf3696" />
+
 
 ## from regression to binary classification
 
-![alt text](image-71.png)
+<img width="646" alt="image" src="https://github.com/user-attachments/assets/e9889265-145b-440d-8a57-bf11117c7e18" />
+
 
 ### Cost funtion for binary classification using collaborative filtering
 
-![alt text](image-72.png)
+<img width="653" alt="image" src="https://github.com/user-attachments/assets/b14a5aa5-51bf-4250-a89d-e950e47fc5e3" />
+
 
 ## Recommender Systems Implementation
 
 ### Mean Normalization
 
-![alt text](image-73.png)
+<img width="645" alt="image" src="https://github.com/user-attachments/assets/4a278889-070f-43f5-84b8-b3fb0dc2958d" />
 
-![alt text](image-74.png)
+
+<img width="645" alt="image" src="https://github.com/user-attachments/assets/86f94cd4-387e-4210-bbff-2e08548e2fb0" />
+
 
 ## How we want related items in websites
 
-![alt text](image-75.png)
+<img width="645" alt="image" src="https://github.com/user-attachments/assets/ec4c5c7c-cccc-497a-8621-5348da8302fe" />
+
 
 ## Limitations of Collaborative filtering
 
-![alt text](image-76.png)
+<img width="645" alt="image" src="https://github.com/user-attachments/assets/47d2db3b-8d03-4e29-95bc-a5d2acd8065f" />
