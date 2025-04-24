@@ -61,22 +61,21 @@ y = output/target variable
 
 y_hat = Output/Prediction of model
 
-![alt text](![image-1](https://github.com/user-attachments/assets/9b0ac277-fe97-4146-a06c-f00b7220f00b)
-)
+(![image-1](https://github.com/user-attachments/assets/9b0ac277-fe97-4146-a06c-f00b7220f00b)
 
-![Linear Regression with 1 variable](![image-2](https://github.com/user-attachments/assets/5ebfbfc4-a486-4129-9c40-0dc7574b9e2e)
+(![image-2](https://github.com/user-attachments/assets/5ebfbfc4-a486-4129-9c40-0dc7574b9e2e)
 
 ## Cost Function 
 It is used to measure the performance or error of a model. It is also known as Squared Error Cost Function. Cost function is denoted as *J(w,b)* which is function of w, b. It tries to find difference between the actual values and the predicted values from mode.
 
-![Cost Function J](![image-3](https://github.com/user-attachments/assets/9dac780b-3813-4684-9606-e30cff5fe331)
+(![image-3](https://github.com/user-attachments/assets/9dac780b-3813-4684-9606-e30cff5fe331)
 
-![alt text](![image-4](https://github.com/user-attachments/assets/d5926cc1-7a4d-4f6e-bb05-a4106b051f70)
+(![image-4](https://github.com/user-attachments/assets/d5926cc1-7a4d-4f6e-bb05-a4106b051f70)
 
 
 The cost function tries to minimize the error value as low as possible to find the best fit model.
 
-![3D Plot of Cost Function](![image-5](https://github.com/user-attachments/assets/b0da9e1b-02c7-47e3-9c94-9887dd9736e2)
+(![image-5](https://github.com/user-attachments/assets/b0da9e1b-02c7-47e3-9c94-9887dd9736e2)
 
 
 This plot shows the cost function with respect to w and b on the x and y axis respectively. On the z axis there is the output of the function J(w,b). While model training the goal of the model is to minimize the cost function.
@@ -93,13 +92,13 @@ Basic Steps of Gradient Descent:
 * Calculate output of the cost function.
 * Adjust the cost function to reduce the output of cost function until we find or settle at near minimum
 
-![Parameters Update in Gradient Descent](![image-6](https://github.com/user-attachments/assets/47e8f3ba-dee5-407b-8101-60602c00c70d)
+(![image-6](https://github.com/user-attachments/assets/47e8f3ba-dee5-407b-8101-60602c00c70d)
 
 
-![Finding Minima Using Gradient Descent](![image-7](https://github.com/user-attachments/assets/4e7be670-c0e0-49ca-8ff3-77c38a3fed8a)
+(![image-7](https://github.com/user-attachments/assets/4e7be670-c0e0-49ca-8ff3-77c38a3fed8a)
 
 
-![Equation related to Linear Regression](![image-8](https://github.com/user-attachments/assets/190d78a2-a0b7-4878-a20a-a2aaa500ed2f)
+(![image-8](https://github.com/user-attachments/assets/190d78a2-a0b7-4878-a20a-a2aaa500ed2f)
 
 
 Type of Gradient Descent:
@@ -123,7 +122,7 @@ In multiple linear regression we have multiple features like *X1, X2, X3* and so
 
 Here, W is a vector that contains multiple weights as  vectors. Same goes for X as well.
 
-![Function Equation with code](![image-9](https://github.com/user-attachments/assets/c5af3593-685a-463b-8f4e-fd7cc14951d7)
+(![image-9](https://github.com/user-attachments/assets/c5af3593-685a-463b-8f4e-fd7cc14951d7)
 
 
 ```python 
@@ -140,7 +139,7 @@ f = np.dot(w*x)+b
 ```
 This will do the element wise dot product of **w* and *x*. It is more efficient compared to the previous one. 
 
-![vector process](![image-10](https://github.com/user-attachments/assets/d0ab1448-9bd9-47ae-8ba1-c7e51801a2c0)
+(![image-10](https://github.com/user-attachments/assets/d0ab1448-9bd9-47ae-8ba1-c7e51801a2c0)
 
 
 ## Vector Implementation of Gradient Descent
@@ -152,7 +151,7 @@ Array operations specially vector operations can run faster compared to normal o
 for j in range (0, 15)
 f=f+w[j]*x[j]
 ```
-![alt text](![image-11](https://github.com/user-attachments/assets/3005771d-c323-4740-87c3-6ed589dc2e47)
+(![image-11](https://github.com/user-attachments/assets/3005771d-c323-4740-87c3-6ed589dc2e47)
 
 
 ## Alternative to Gradient Descent
@@ -177,17 +176,17 @@ Feature Scaling Techniques:
 
 1. Mean Normalization: It is also known as min-max scaling. It transform the features from range -1 to 1.
 
-![Formula for Standardization=](![equation (1)](https://github.com/user-attachments/assets/19a8b1a5-f6e3-4b91-bd8c-7c3db0a008e4)
+(![equation (1)](https://github.com/user-attachments/assets/19a8b1a5-f6e3-4b91-bd8c-7c3db0a008e4)
 
 2. Z Score Normalization: It transforms the feature such that they have mean = 0 and standard deviation of 1. 
 
-![Formula for Z Score](![equation](https://github.com/user-attachments/assets/51d03527-131b-464b-8a63-6cf5e5754ac8)
+(![equation](https://github.com/user-attachments/assets/51d03527-131b-464b-8a63-6cf5e5754ac8)
 
 
 ## Learning Curve
 It helps to understand how well our gradient descent algorithm is performing. To plot this curve we need to calculate the value of cost function after each iteration. If the Gradient Descent algorithm converges that means the graph will converge near to x axis with increase in iteration.
 
-![alt text](![image-12](https://github.com/user-attachments/assets/a8334314-7179-41ce-a08b-105017a22330)
+(![image-12](https://github.com/user-attachments/assets/a8334314-7179-41ce-a08b-105017a22330)
 
 
 ## Automatic Convergence Test
@@ -199,7 +198,7 @@ It is most important task in machine learning while preparing the dataset for mo
 ## Polynomial Regression
 It is a advance version of linear regression that uses higher order variable for fitting curved instead of straight line. The equation for polynomial regression can be described as following:
 
-![alt text](![image-13](https://github.com/user-attachments/assets/c1a53014-31bc-4c03-b5cd-37609d445d0a)
+(![image-13](https://github.com/user-attachments/assets/c1a53014-31bc-4c03-b5cd-37609d445d0a)
 
 
 The term n decides the number of features to be fitted. It can vary based on dataset and requirements.Compared to only x it converts the feature power raise to n.
@@ -214,7 +213,7 @@ Even if we use threshold for example:
 
 It will work well on dataset that can be separable linearly means the 2 classes can be separated using a straight line. But, as we know the output of the regression can be anything so threshold method will to classify the 2 classes.
    
-![alt text](![image-14](https://github.com/user-attachments/assets/70fefb41-97c4-4c3a-8650-089e41670fa0)
+(![image-14](https://github.com/user-attachments/assets/70fefb41-97c4-4c3a-8650-089e41670fa0)
 
 
 ## Logistic Regression
@@ -224,7 +223,7 @@ So, we need something which output will be always in between 0/1 no matter. To d
 
 ## Sigmoid Function
 
-![Sigmoid Function](![image-15](https://github.com/user-attachments/assets/dfcbf87d-b401-47f1-92ab-07e68dacdde3)
+(![image-15](https://github.com/user-attachments/assets/dfcbf87d-b401-47f1-92ab-07e68dacdde3)
 
 
 This is an exponential function which limits the output in between 0 to 1.
@@ -232,7 +231,7 @@ This is an exponential function which limits the output in between 0 to 1.
 * When z is large negative number the output of g(z) is very close to 0.
 * When z=0, the output of g(z) is 0.5
 
-![Logistic Regression Algorithm](![image-16](https://github.com/user-attachments/assets/cd51f1a8-34d6-452f-a245-62e0b4c8f984)
+(![image-16](https://github.com/user-attachments/assets/cd51f1a8-34d6-452f-a245-62e0b4c8f984)
 
 The above equation depicts how the linear regression model can be utilized for Binary Classification Task using the sigmoid function. The output of g(z) will always e in between 0 to 1.
 
@@ -250,41 +249,46 @@ As we have seen, that the output of the sigmoid function along with linear regre
 
 For 2 features along with 2 class the equation will be as following
 
-![2 feature with 2 eqn](image-18.png)
+(![image-18](https://github.com/user-attachments/assets/e6fb6b7b-b0cc-4615-bae9-85730ee8c9bf)
+
 * At point *z = 0* the model will be neutral.
 * If *w1 = w2 = 1* and *b=-3*, then the equation will be as following:
   
-![Decision Boundary](image-19.png)
+(![image-19](https://github.com/user-attachments/assets/bc77e905-a5e4-494e-943e-c42f03cdd431)
+
 
 If we plot the decision boundary to visualize how it works we can see that 1 linear line is separating both classes.
 
 ## Non-Linear Decision Boundary
 As we have seen in the previous example that decision boundary was a linear line that separates 2 classes. But the decision boundary can also be non-linear. In that case, we need polynomial regression that has higher order terms to create non-linear decision boundary. Some example of non-linear decision boundary:
 
-![Circle](image-20.png)
+(![image-20](https://github.com/user-attachments/assets/71075834-30e8-4b2f-8331-94a08093c976)
 
 The decision boundary is circle as the equation is similar to a circle. So, the circle works as a boundary line in between 2 classes similar to the previous one.
 
-![Complex](image-21.png)
+(![image-21](https://github.com/user-attachments/assets/212fe6d3-3a71-4924-879a-9ad34e2ae247)
 
 The decision boundary becomes more complex with higher order polynomial terms in the equation.
 
 ## Cost Function for Logistic Regression
 
-![Cost fn of LR](image-22.png)
+(![image-22](https://github.com/user-attachments/assets/38116d43-9c83-487e-98bf-60cc76e15435)
+
 
 From the cost function above we can see that the function is non-convex function. While dealing with an optimization problem with Non-convex graph we face the problem of getting stuck at the local minima instead of the global minima. The presence of multiple local minima can make it challenging to find the optimal solution for a machine learning model. If the model gets trapped in a local minimum, it will not achieve the best possible performance.   
 
 So, we need a new cost function such that the it has the property of convex function and the gradient descent algorithm can optimize it during the training process.
 
-![Logistic Loss Function](image-23.png)
+(![image-23](https://github.com/user-attachments/assets/3d2cb04a-ae1c-4456-92b3-7fee472c6fdf)
+
 
 1. *Positive Class:* When the model predicts 1 and the true label is also 1, then the loss is very minimum or close to 0(left most point of x-axis). On the contrary, if model predicts 0.1 but the actual class is 1. Then the loss is very much high(very upper point of the y-axis)
    
    * If the prediction is close to actual label the loss is close to 0
    * If the prediction is far from the actual label the loss is very high.
 
-![log_reg=1](image-24.png)
+(![image-24](https://github.com/user-attachments/assets/efd9696f-a446-4d81-aebf-0b4d149e43af)
+
 
 1. *Negative Class:* When the model predicts 0 and the true label is also 0, then the loss is very minimum or close to 0(left most point of x-axis). On the contrary, if model predicts 0.7 or anything close to 1 but the actual class is 0, then the loss is very much high approaching to infinity(right most point of x axis)
 
@@ -294,21 +298,24 @@ So, we need a new cost function such that the it has the property of convex func
 
 Thus, the different portion of the loss function mainly for class 1 and class 0 acts as convex function which is a must requirement for gradient descent to optimize model parameters minimizing the loss.
 
-![2 plot of cost fn](image-26.png)
+(![image-25](https://github.com/user-attachments/assets/f01fe362-01fc-43f3-b300-9ab4ce93ecac)
+
 
 ## Simplified Version of Loss & Cost Function
 
-![simplified loss function](image-27.png)
+(![image-27](https://github.com/user-attachments/assets/fe68fa19-6b51-4e79-b775-f8647ccdef1b)
+
 
 From the above image, we can see that the piecewise function we have seen earlier can be written as a single function which actually works as before depending on the class selection(y=0/1).
 
-![simplified cost function](image-28.png)
+(![image-28](https://github.com/user-attachments/assets/ad13bf0f-0a33-43e8-8c8f-6a67d93733ad)
+
 
 From the above image, we can see the cost function is nothing but the average of all loss function. However, this function was derived from a statistical method called Maximum Likelihood. It's a method tries that to find the best parameters for the model to make the model more probable in predicting the given dataset.
 
 ## Gradient Descent Equation for Logistic Regression
 
-![LR_GD](image-29.png)
+(![image-29](https://github.com/user-attachments/assets/8d01086b-5779-4553-b033-bd8d96ca7d86)
 
 Here, the equation may look like same as we have seen in the linear regression. But, the definition of *f(x)* is not similar to linear regression as *f(x)* is passed to sigmoid function. The above 2 equations are used to update model parameters simultaneously while training the model. The steps we required for optimizing the gradient descent will be similar we have learnt in the linear regression part.
 
@@ -316,7 +323,8 @@ Here, the equation may look like same as we have seen in the linear regression. 
 
 It is very usual that sometimes machine learning model falls into problem like overfitting and underfitting.
 
-![overfit-underfit problem](image-30.png)
+(![image-30](https://github.com/user-attachments/assets/557abf7e-6690-492f-b619-ae26cb47cc07)
+
 
 1. *Underfit:* When model has high bias and unable to fit the training data well that is known as underfitting.
 2. *Overfit:* When model has high variance and fits the training data very well that is known as overfitting.
@@ -330,7 +338,8 @@ It is very usual that sometimes machine learning model falls into problem like o
 ## Cost Function with Regularization 
 As we need to apply regularization to prevent overfitting. We need to add a regularization term with the cost function.
 
-![Cost Function with Regularization](image-31.png)
+(![image-31](https://github.com/user-attachments/assets/52238364-41dc-45af-acbc-8c64a163526d)
+
 
 Choice of the lambda term select the impact of the regularization parameter.
 
@@ -340,11 +349,12 @@ Choice of the lambda term select the impact of the regularization parameter.
 
 ## Regularization in Linear Regression
 
-![Cost Fn with Regularization](image-32.png)
+(![image-32](https://github.com/user-attachments/assets/a09ca459-57f8-48d7-adb1-a009b75ae82f)
 
 
 ## Regularization with Logistic Regression
 
 Equation for logistic regression with regularization including the cost function and parameter updating function as following
 
-![LR_Reg](image-33.png)
+(![image-33](https://github.com/user-attachments/assets/bbab12dc-9088-49c1-8999-2c9435b98c69)
+
