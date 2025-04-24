@@ -25,8 +25,8 @@ Classification is type of supervised learning algorithm that tries to classify d
 1. Binary Classification(0/1)
 2. Multi-Class Classification(1/2/3...) 
 
-![alt text](![image](https://github.com/user-attachments/assets/ac628097-422c-4248-86af-742bc139f99b)
-)
+(![image](https://github.com/user-attachments/assets/ac628097-422c-4248-86af-742bc139f99b)
+
 
 This represents a classification task which mainly differentiate between two cancer classes
 
