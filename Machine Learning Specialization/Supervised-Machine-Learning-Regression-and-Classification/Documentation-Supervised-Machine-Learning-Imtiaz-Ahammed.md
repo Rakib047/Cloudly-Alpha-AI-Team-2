@@ -198,7 +198,7 @@ It is most important task in machine learning while preparing the dataset for mo
 ## Polynomial Regression
 It is a advance version of linear regression that uses higher order variable for fitting curved instead of straight line. The equation for polynomial regression can be described as following:
 
-![image-13](https://github.com/user-attachments/assets/c1a53014-31bc-4c03-b5cd-37609d445d0a)
+![image-13](![image-13](https://github.com/user-attachments/assets/4f9605b1-05a7-4b40-a2bc-6ad0dae5a360)
 
 
 The term n decides the number of features to be fitted. It can vary based on dataset and requirements.Compared to only x it converts the feature power raise to n.
@@ -231,7 +231,8 @@ This is an exponential function which limits the output in between 0 to 1.
 * When z is large negative number the output of g(z) is very close to 0.
 * When z=0, the output of g(z) is 0.5
 
-![image-16](https://github.com/user-attachments/assets/cd51f1a8-34d6-452f-a245-62e0b4c8f984)
+![image-16](![image-16](https://github.com/user-attachments/assets/f94e1d92-2190-4a4e-af01-7ec9ab2f7629)
+
 
 The above equation depicts how the linear regression model can be utilized for Binary Classification Task using the sigmoid function. The output of g(z) will always e in between 0 to 1.
 
@@ -240,7 +241,8 @@ The output of the sigmoid function along with linear regression can be interpret
 * On the other hand, it also means that the probability for the given input to be negative class 1 is 30.
 
 The probability of class 1/2 can be expressed as following:
-![Log Reg Probability Eqn](![Uploading image-17.png…]()
+
+![image-17](https://github.com/user-attachments/assets/34cf018f-1147-4bf1-921b-0a77463d92b0)
 
 The equation means that probability of y to be class 1, given input x, parameters w and b.
 
@@ -249,7 +251,8 @@ As we have seen, that the output of the sigmoid function along with linear regre
 
 For 2 features along with 2 class the equation will be as following
 
-![image-18](https://github.com/user-attachments/assets/e6fb6b7b-b0cc-4615-bae9-85730ee8c9bf)
+![image-18](https://github.com/user-attachments/assets/f4f5a6c7-d559-4526-a705-f4734a56817a)
+
 
 * At point *z = 0* the model will be neutral.
 * If *w1 = w2 = 1* and *b=-3*, then the equation will be as following:
