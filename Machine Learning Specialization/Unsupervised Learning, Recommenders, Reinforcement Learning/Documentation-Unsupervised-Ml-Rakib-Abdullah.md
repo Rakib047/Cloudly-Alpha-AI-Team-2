@@ -144,6 +144,8 @@ for the above figure
 
 <img width="566" alt="image" src="https://github.com/user-attachments/assets/859bb3ed-8f36-4369-adbd-7838c0df62b1" />
 
+---
+
 # Week 2
 ## Collaborative Filtering Algorithm
 
@@ -229,3 +231,37 @@ for the above figure
 ## Limitations of Collaborative filtering
 
 <img width="645" alt="image" src="https://github.com/user-attachments/assets/47d2db3b-8d03-4e29-95bc-a5d2acd8065f" />
+
+## Content based filtering
+
+- main idea is to match user features and content features
+
+### Content based vs collaborative filtering
+
+![alt text](image-77.png)
+
+## Example of features in content based filtering
+
+![alt text](image-78.png)
+
+### How content based filtering works
+
+![alt text](image-79.png)
+
+## Deep learning for content based filtering
+
+- we train the network in such a way that we get v_u and v_m values that will reduce the cost function value
+
+![alt text](image-80.png)
+
+**Try to minimize || V_m^k - V_m^(i) || as much as possible**
+
+![alt text](image-81.png)
+
+## Recommending from large catalogue
+
+- It is done in two steps -> `Retrieval` and `Ranking`
+
+![alt text](image-82.png)
+
+![alt text](image-83.png)
