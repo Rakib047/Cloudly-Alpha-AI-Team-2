@@ -238,30 +238,37 @@ for the above figure
 
 ### Content based vs collaborative filtering
 
-![alt text](image-77.png)
+![image](https://github.com/user-attachments/assets/93dfbe3d-b5f9-4329-961d-9188bd1cfc22)
+
 
 ## Example of features in content based filtering
 
-![alt text](image-78.png)
+![image](https://github.com/user-attachments/assets/c258ffb0-e3ba-42cb-a056-69483d5a20c9)
+
 
 ### How content based filtering works
 
-![alt text](image-79.png)
+![image](https://github.com/user-attachments/assets/97ff6c9b-d0f8-4bae-9fd5-dd605e6010e2)
+
 
 ## Deep learning for content based filtering
 
 - we train the network in such a way that we get v_u and v_m values that will reduce the cost function value
 
-![alt text](image-80.png)
+![image](https://github.com/user-attachments/assets/12286c7a-7b1e-4a19-92d9-47d1989e4019)
+
 
 **Try to minimize || V_m^k - V_m^(i) || as much as possible**
 
-![alt text](image-81.png)
+![image](https://github.com/user-attachments/assets/ff275d28-ce6f-474e-b58c-34cf7225f26b)
+
 
 ## Recommending from large catalogue
 
 - It is done in two steps -> `Retrieval` and `Ranking`
 
-![alt text](image-82.png)
+![image](https://github.com/user-attachments/assets/eb0bdf8d-f42e-4ed8-bb6e-005ad4254434)
 
-![alt text](image-83.png)
+
+![image](https://github.com/user-attachments/assets/e446bdcb-0745-416c-b064-fcec952b13e2)
+
