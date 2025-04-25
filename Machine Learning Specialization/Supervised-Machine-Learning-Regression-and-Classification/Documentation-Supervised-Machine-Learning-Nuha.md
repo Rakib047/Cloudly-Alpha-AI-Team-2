@@ -1265,7 +1265,7 @@ These are **examples of polynomial regression**.
 
 # Regularized Logistic Regression
 
-## Key Concepts
+
 - **Logistic Regression Overfitting**: 
   - Logistic regression can suffer from **overfitting** when using **high-order polynomial features** or many features.
   - Overfitting leads to **complex decision boundaries** that don't generalize well to new data.
