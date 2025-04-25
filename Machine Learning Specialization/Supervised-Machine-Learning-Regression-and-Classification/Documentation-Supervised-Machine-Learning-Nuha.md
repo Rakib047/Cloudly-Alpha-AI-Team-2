@@ -1212,16 +1212,7 @@ These are **examples of polynomial regression**.
 
 
 
-
 ---
-
-# Gradient Descent for Regularized Linear Regression
-
-## Goal
-- **Learn how to apply gradient descent** for **regularized linear regression** to reduce overfitting.
-
----
-
 ##  Regularized Linear Regression Cost Function
 - **Cost function** now includes an additional **regularization term**:
   ```
@@ -1272,7 +1263,7 @@ These are **examples of polynomial regression**.
 
 ---
 
-# Regularized Logistic Regression - Summary Notes
+# Regularized Logistic Regression
 
 ## Key Concepts
 - **Logistic Regression Overfitting**: 
