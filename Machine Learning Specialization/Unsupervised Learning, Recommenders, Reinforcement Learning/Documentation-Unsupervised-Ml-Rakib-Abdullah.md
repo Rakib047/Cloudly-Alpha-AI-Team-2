@@ -274,4 +274,4 @@ for the above figure
 
 ## TensorFlow implementation of content-based filtering
 
-![alt text](image.png)
+![alt text](image-84.png)
