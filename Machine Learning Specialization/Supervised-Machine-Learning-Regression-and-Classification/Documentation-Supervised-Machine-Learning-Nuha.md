@@ -363,7 +363,7 @@ Gradient Descent helps to minimize the cost function more systematically.
 
 ## Normal Equation: An Alternative to Gradient Descent
 
-- **Defination**
+- **Definition**
   - A **closed-form** solution to linear regression.
   - Uses linear algebra to solve for $ \mathbf{w} $ and $ b $ without iteration.
 
@@ -419,7 +419,7 @@ Gradient Descent helps to minimize the cost function more systematically.
 
 ## Feature Scaling Solution
 
-- **Defination**
+- **Definition**
   - Transform input features to similar ranges.
   - Example: Scale both `x1` and `x2` to range from 0 to 1.
 
