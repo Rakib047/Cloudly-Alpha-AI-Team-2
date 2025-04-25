@@ -216,5 +216,70 @@ Gradient Descent helps to minimize the cost function more systematically.
   - “Batch” ⇒ each update uses **all** training examples (sum over $i=1\ldots m$).  
   - Contrast: other variants use subsets (mini‑batch or stochastic).
 
+# Multiple Linear Regression
+
+
+- From One Feature to Many
+
+- **Original Model (Univariate Regression)**
+  - Used a single feature $ x $ (e.g., house size).
+  - Model: $ f_{w,b}(x) = wx + b $
+
+- **Multiple Features Scenario**
+  - Now include more features like:
+    - $ x_1 $: size of the house  
+    - $ x_2 $: number of bedrooms  
+    - $ x_3 $: number of floors  
+    - $ x_4 $: age of the house
+
+- **New Notation**
+  - $ x_j $: j-th feature  
+  - $ n $: number of features (e.g., 4)  
+  - $ x^{(i)} $: feature vector for the i-th training example  
+  - $ x^{(i)}_j $: j-th feature of the i-th example (e.g., $ x^{(2)}_3 = 2 $)  
+  - Vectors may be written with arrows ($ \vec{x} $) to signify they are lists of numbers
+
+---
+
+## Multiple Linear Regression Model
+
+- **General Model**
+  - $ f_{w,b}(x) = w_1x_1 + w_2x_2 + \dots + w_nx_n + b $
+
+- **Concrete Example**
+  - $ f_{w,b}(x) = 0.1x_1 + 4x_2 + 10x_3 - 2x_4 + 80 $
+  - assuming output in $1000s:
+    - Base price = $80,000  
+    - +$100 per extra square foot  
+    - +$4,000 per bedroom  
+    - +$10,000 per floor  
+    - -$2,000 per year of age
+
+---
+
+## Compact Notation Using Vectors
+
+- **Define Vectors**
+  - $ \vec{w} = [w_1, w_2, \dots, w_n] $
+  - $ \vec{x} = [x_1, x_2, \dots, x_n] $
+
+- **Dot Product Form**
+  - Model becomes:  
+    $ f_{w,b}(x) = \vec{w} \cdot \vec{x} + b $ 
+  - Dot product:  
+    $ \vec{w} \cdot \vec{x} = \sum_{j=1}^{n} w_j x_j $
+
+---
+
+## Terminology
+
+- **Multiple Linear Regression**
+  - Regression with multiple input features.
+  - Also known as multivariate linear regression (though technically “multivariate regression” is a different concept).
+
+- **Univariate Regression**
+  - Linear regression with a single input feature.
+
+---
 
 
