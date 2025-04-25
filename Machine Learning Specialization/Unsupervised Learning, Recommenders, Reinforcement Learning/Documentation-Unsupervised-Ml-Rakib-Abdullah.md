@@ -272,3 +272,6 @@ for the above figure
 
 ![image](https://github.com/user-attachments/assets/e446bdcb-0745-416c-b064-fcec952b13e2)
 
+## TensorFlow implementation of content-based filtering
+
+![alt text](image.png)
