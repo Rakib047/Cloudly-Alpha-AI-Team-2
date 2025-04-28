@@ -284,17 +284,21 @@ for the above figure
 
 - Some features are actually not needed
 
-![alt text](image-85.png)
+<img width="706" alt="image" src="https://github.com/user-attachments/assets/592f5ad4-2e27-472a-92b4-20e0304c8468" />
+
 
 - The goal of PCA is to find one or more new axis
 
-![alt text](image-86.png)
+<img width="706" alt="image" src="https://github.com/user-attachments/assets/6437983f-deed-49bb-bbb1-d88eabdfbc12" />
 
-![alt text](image-87.png)
+
+<img width="706" alt="image" src="https://github.com/user-attachments/assets/b718c955-23cf-439a-86bb-0e8ce17a30ce" />
+
 
 ### An Example
 
-![alt text](image-89.png)
+<img width="706" alt="image" src="https://github.com/user-attachments/assets/f5201bd1-953b-4c7c-a868-f71468d0ceed" />
+
 
 ## The PCA algorithm
 
@@ -303,32 +307,40 @@ for the above figure
 
 - Choose an axis,axis choice is important because it defines how we are going to capture the nature of the data
 
-![alt text](image-90.png)
+<img width="709" alt="image" src="https://github.com/user-attachments/assets/a2b3a469-b383-4aed-84eb-fca33d7d650d" />
 
-![alt text](image-92.png)
+
+<img width="707" alt="image" src="https://github.com/user-attachments/assets/b930a23a-6561-446e-aa0a-7bac5f7b6a9b" />
+
 
 **The axis with highest variance is the principal axis**
 
-![alt text](image-93.png)
+<img width="707" alt="image" src="https://github.com/user-attachments/assets/74bcd52e-1ef4-4299-9802-7e923beacbd5" />
+
 
 - More than one principal component
 
-![alt text](image-94.png)
+<img width="707" alt="image" src="https://github.com/user-attachments/assets/0655610e-1b04-4ba1-9c84-7862766f67f9" />
+
 
 ### We can also reconstruct the data from PCA
 
-![alt text](image-95.png)
+<img width="707" alt="image" src="https://github.com/user-attachments/assets/0bd5a6dc-d7fd-40de-b828-607e91b41019" />
+
 
 ## PCA in code
 
 ### Steps
 
-![alt text](image-96.png)
+<img width="707" alt="image" src="https://github.com/user-attachments/assets/1d313f00-1937-4bc7-8bbf-4b79058c129b" />
+
 
 - The code
 
-![alt text](image-97.png)
+<img width="732" alt="image" src="https://github.com/user-attachments/assets/3f6fbb10-6cf5-47f0-9bb2-eb73cd2cd5a9" />
+
 
 ## Application of PCA
 
-![alt text](image-98.png)
+<img width="698" alt="image" src="https://github.com/user-attachments/assets/6a668bce-90d4-4269-979b-ee7d37f03744" />
+
