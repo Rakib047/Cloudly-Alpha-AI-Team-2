@@ -275,3 +275,60 @@ for the above figure
 ## TensorFlow implementation of content-based filtering
 
 ![image](https://github.com/user-attachments/assets/71cb6231-5f86-4556-a837-65a0d59d83dc)
+
+## Some other Unsupervised Learning Algorithm 
+
+## PCA (Principal Component Analysis)
+
+### Why to use PCA
+
+- Some features are actually not needed
+
+![alt text](image-85.png)
+
+- The goal of PCA is to find one or more new axis
+
+![alt text](image-86.png)
+
+![alt text](image-87.png)
+
+### An Example
+
+![alt text](image-89.png)
+
+## The PCA algorithm
+
+- Normalized the features to zero mean
+- Scale the features values so that some are not too big or too small
+
+- Choose an axis,axis choice is important because it defines how we are going to capture the nature of the data
+
+![alt text](image-90.png)
+
+![alt text](image-92.png)
+
+**The axis with highest variance is the principal axis**
+
+![alt text](image-93.png)
+
+- More than one principal component
+
+![alt text](image-94.png)
+
+### We can also reconstruct the data from PCA
+
+![alt text](image-95.png)
+
+## PCA in code
+
+### Steps
+
+![alt text](image-96.png)
+
+- The code
+
+![alt text](image-97.png)
+
+## Application of PCA
+
+![alt text](image-98.png)
