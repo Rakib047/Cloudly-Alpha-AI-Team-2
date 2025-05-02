@@ -1730,6 +1730,441 @@ model.fit(X, Y, epochs=10)
   - Differs from multiclass classification — one input can belong to multiple classes.
 
 ---
+# Multi-Label Classification
+
+## Multi-Class vs Multi-Label Classification
+- **Multi-Class Classification**:
+  - Output label `Y` is a single value from a set of possible classes (e.g., 0–9 for digit classification).
+  - Only one class is correct per input.
+  
+- **Multi-Label Classification**:
+  - Output label `Y` is a *vector* of binary values, each indicating the presence or absence of a specific class.
+  - Multiple classes can be simultaneously true for a single input.
+  - Example: An image can have a car, a bus, and a pedestrian all at once.
+
+## Real-World Example: Self-Driving Cars
+- **Scenario**: Given an image from a car's camera, detect:
+  - Is there a car?
+  - Is there a bus?
+  - Is there a pedestrian?
+- **Output**: A binary vector like `[1, 0, 1]` meaning car present, no bus, pedestrian present.
+
+## Modeling Multi-Label Classification
+- **Separate Models Approach**:
+  - Build 3 independent neural networks:
+    - One to detect cars.
+    - One to detect buses.
+    - One to detect pedestrians.
+  - Each network performs a binary classification task.
+  
+- **Unified Model Approach**:
+  - Use a single neural network to make all three predictions.
+  - Architecture:
+    - Input layer → Hidden layers → Output layer with 3 neurons.
+    - Each output neuron corresponds to one label (car, bus, pedestrian).
+  - Use **sigmoid activation function** on each output neuron.
+  - Final output: A vector `[a₁³, a₂³, a₃³]` with each value in the range (0, 1), representing the probability of each label being present.
+
+## Activation Function
+- **Sigmoid for Multi-Label**:
+  - Used instead of softmax.
+  - Each output is treated independently with its own probability.
+
+## Important Distinction
+- **Why It Matters**:
+  - Multi-class and multi-label classifications are often confused.
+  - It’s crucial to know which type fits your task.
+  - Use **multi-label** when multiple labels may apply to the same input.
+  - Use **multi-class** when exactly one label applies.
+
+
+- Multi-label classification allows multiple binary labels per input.
+- Useful in scenarios like object detection where multiple objects may be present.
+- Can be implemented via multiple binary classifiers or a single model with multiple outputs and sigmoid activations.
+
+---
+
+# Adam Optimization Algorithm
+
+## Introduction to Optimization in Neural Networks
+- **Gradient Descent**:
+  - A widely used optimization algorithm.
+  - Updates parameters in the opposite direction of the gradient.
+  - Foundation for many early ML algorithms like linear/logistic regression.
+  - Basic update:  
+    `w_j = w_j - α * ∂J/∂w_j`
+
+## Challenges with Gradient Descent
+- **Small Learning Rate**:
+  - Takes small steps towards the minimum.
+  - Converges slowly.
+  - Steps often go in the same direction repeatedly.
+  
+- **Large Learning Rate**:
+  - Can overshoot the minimum.
+  - May cause oscillations and unstable convergence.
+  
+- **Need for a Better Approach**:
+  - We want an algorithm that can:
+    - Increase learning rate when progress is slow.
+    - Decrease learning rate when oscillations occur.
+
+## Adam Optimization Algorithm
+- **What is Adam?**:
+  - Stands for **Adaptive Moment Estimation**.
+  - Automatically adjusts learning rates during training.
+  - Adaptively tunes learning rates for each individual parameter.
+
+- **Key Ideas**:
+  - If a parameter moves consistently in the same direction, increase its learning rate.
+  - If a parameter oscillates, decrease its learning rate.
+  - Uses separate learning rates for each parameter (e.g., α₁ for w₁, α₂ for w₂, ..., α₁₁ for b).
+
+- **Why Adam is Effective**:
+  - Can handle sparse gradients efficiently.
+  - Combines ideas from momentum and RMSProp optimizers.
+  - More robust to initial learning rate choices compared to plain gradient descent.
+
+## Implementing Adam in TensorFlow
+- **Code Snippet**:
+  ```python
+  model.compile(
+      optimizer=tf.keras.optimizers.Adam(learning_rate=1e-3),
+      loss='binary_crossentropy',
+      metrics=['accuracy']
+  )
+
+## Tuning learning rate
+- Default `1e-3`
+- Try a few different values (both larger and smaller) for best results.
+- Adam is less sensitive to exact learning rate but still benefits from tuning.
+---
+- Adam is the go-to optimization algorithm for training deep neural networks.
+- Automatically adjusts learning rates, making training faster and more stable.
+- Replaces plain gradient descent in most practical applications.
+- Simple to implement and robust to hyperparameter choices.
+- Safe default choice for optimizing neural networks.
+
+---
+
+# Convolutional Layers and Convolutional Neural Networks (CNNs)
+
+## Recap: Dense Layers
+- **Dense (Fully Connected) Layer**:
+  - Every neuron receives input from all activations in the previous layer.
+  - Can build powerful models with just dense layers.
+
+## Introduction to Convolutional Layers
+- **What is a Convolutional Layer?**:
+  - Each neuron looks at only a small *region* of the input, not the entire input.
+  - These local regions are called **receptive fields** or **filters**.
+  - Commonly used in image and time-series data.
+
+- **Benefits of Convolutional Layers**:
+  - **Computational Efficiency**: Fewer connections mean faster computations.
+  - **Fewer Parameters**: Reduces the number of weights to learn.
+  - **Less Overfitting**: Due to parameter sharing and reduced complexity.
+  - **Requires Less Data**: Can generalize better with smaller datasets.
+
+## Example 1: Image Input (Handwritten Digit "9")
+- Input is a 2D image.
+- Each hidden neuron in the convolutional layer looks at a small rectangular section (e.g., 5x5 pixels).
+- Each neuron detects specific features (e.g., edges, corners) in its local region.
+- Leads to **feature maps** that capture local spatial features of the input.
+
+## Example 2: Time-Series Input (ECG Signal)
+- **Input**: 1D ECG signal with 100 time steps: X₁ to X₁₀₀.
+- **First Hidden Layer (Convolutional)**:
+  - Each neuron looks at a *window* of the input (e.g., 20 time steps).
+  - Neuron 1: X₁ to X₂₀  
+    Neuron 2: X₁₁ to X₃₀  
+    ...  
+    Neuron 9: X₈₁ to X₁₀₀
+- **Second Hidden Layer (Convolutional)**:
+  - Looks at limited windows from the previous layer's activations.
+  - Neuron 1: A₁ to A₅  
+    Neuron 2: A₃ to A₇  
+    Neuron 3: A₅ to A₉
+- **Output Layer**:
+  - A sigmoid unit receives all 3 final activations to classify (e.g., heart disease or not).
+
+## Key Takeaways on CNNs
+- **CNNs = Neural Networks with Convolutional Layers**:
+  - Can stack multiple convolutional layers.
+  - Often followed by dense layers for final classification or regression.
+- **Architectural Choices in CNNs**:
+  - Window size (receptive field) of neurons.
+  - Number of neurons per layer.
+  - Number of convolutional layers.
+- **Use Cases**:
+  - Excellent for image, audio, and signal data (e.g., ECG, speech).
+  - Widely used in medical imaging, autonomous vehicles, and more.
+
+## Final Thoughts
+- **Beyond Dense Layers**:
+  - Convolutional layers show that neurons don’t need to connect to every previous neuron.
+  - Opens the door for more efficient and specialized neural networks.
+
+- **Future Architectures**:
+  - Examples include: **Transformers**, **LSTMs**, **Attention Models**.
+  - These are built by inventing and combining different types of layers.
+  - Research in neural networks often focuses on new layer types.
+
+---
+
+# Derivatives and Backpropagation
+
+## Introduction to Backpropagation
+- TensorFlow allows defining a neural network and cost function.
+- It uses **backpropagation** to compute derivatives and apply gradient descent or Adam for training.
+- Backpropagation calculates derivatives of the cost function with respect to parameters.
+
+## Basics of Derivatives
+- Consider a simplified cost function: `J(w) = w²`.
+- Let `w = 3`, then `J(w) = 9`.
+- If `w` increases by `ε = 0.001`, then `w = 3.001` → `J(w) = 3.001² = 9.006001`.
+- Change in `J(w)` is approximately `6 * ε`.
+- The derivative is defined as the ratio:  
+  **If `w` increases by ε, `J(w)` increases by ~kε → derivative = k**
+
+## More Examples
+- `w = 2`:  
+  `J(w) = 4` → `J(2.001) = 4.004001` → Change ≈ `4 * ε` → derivative = 4
+- `w = -3`:  
+  `J(w) = 9` → `J(-2.999) = 8.994001` → Change ≈ `-6 * ε` → derivative = -6
+
+## Visualizing the Derivative
+- Derivative corresponds to the **slope of the tangent line** to the function at a given point.
+- For `J(w) = w²`:
+  - `w = 3` → slope = 6
+  - `w = 2` → slope = 4
+  - `w = -3` → slope = -6
+
+## General Derivative Rule
+- For `J(w) = w²`, the derivative is `2w`:
+  - `w = 3` → `2 * 3 = 6`
+  - `w = 2` → `2 * 2 = 4`
+  - `w = -3` → `2 * -3 = -6`
+
+## Using SymPy for Derivatives
+- SymPy is a Python package for symbolic mathematics.
+- Example code to compute derivatives:
+
+  ```python
+  import sympy as sp
+
+  w = sp.Symbol('w')
+  J = w**2
+  dJ_dw = sp.diff(J, w)
+  dJ_dw.subs(w, 2)  # Output: 4
+  ```
+
+## More Derivative Examples
+
+| Function             | J(w)         | Derivative dJ/dw       | At w = 2          |
+|----------------------|--------------|-------------------------|-------------------|
+| `w²`                | `w**2`       | `2w`                    | `4`               |
+| `w³`                | `w**3`       | `3w²`                   | `12`              |
+| `w`                 | `w`          | `1`                     | `1`               |
+| `1/w`               | `1/w`        | `-1/w²`                 | `-0.25`           |
+
+## Validating via Finite Differences
+- Check with `ε = 0.001`:
+  - `w³`: `J(2) = 8`, `J(2.001) ≈ 8.012` → Change ≈ `12 * ε`
+  - `w`: `J(2.001) = 2.001` → Change = `1 * ε`
+  - `1/w`: `J(2.001) ≈ 0.49975` → Change ≈ `-0.00025 = -0.25 * ε`
+
+## Intuition
+- **Derivative** is the factor `k` such that:
+  - `w + ε` → `J(w)` increases by `k * ε`.
+  - Depends on both the function and value of `w`.
+
+## Notation of Derivatives
+- For a single variable function: `dJ/dw`
+- For multi-variable functions: use **partial derivative notation** `∂J/∂wᵢ`
+- Notation distinction often unnecessary and overcomplicates understanding
+- Throughout the course, the partial derivative symbol `∂` is used for simplicity
+
+
+- Derivative = sensitivity of the cost function to small changes in the parameter
+- Gradient Descent uses this to update weights:  
+  `w_j := w_j - α * ∂J/∂w_j`
+- Larger derivatives → larger updates; smaller derivatives → smaller updates
+- Derivatives vary with both the function and current value of the variable
+
+---
+
+# Computation Graph and Backpropagation
+
+## Computation Graph
+- **Definition**: A computation graph is a set of nodes representing operations and edges representing values (data flow).
+- **Purpose**: Used in deep learning frameworks like TensorFlow to compute outputs and derivatives automatically.
+
+## Example Neural Network
+- **Structure**: 
+  - One layer, one unit (output layer).
+  - Input: `x`
+  - Output: `a = wx + b` (linear activation).
+- **Cost Function**: `J = 1/2 * (a - y)^2`
+- **Given Values**:
+  - `x = -2`
+  - `y = 2`
+  - `w = 2`
+  - `b = 8`
+
+## Forward Propagation (Left-to-Right Computation)
+- **Step-by-step breakdown**:
+  - `c = w * x = 2 * (-2) = -4`
+  - `a = c + b = -4 + 8 = 4`
+  - `d = a - y = 4 - 2 = 2`
+  - `J = 1/2 * d^2 = 1/2 * 4 = 2`
+
+## Backpropagation (Right-to-Left Computation)
+- **Objective**: Compute derivatives of `J` with respect to `w` and `b`.
+
+### Derivative of J with respect to d
+- `∂J/∂d = d = 2` (since `J = 1/2 * d^2`)
+
+### Derivative of J with respect to a
+- `d = a - y`, so small change in `a` leads to equal change in `d`
+- `∂J/∂a = ∂J/∂d * ∂d/∂a = 2 * 1 = 2`
+
+### Derivative of J with respect to c
+- `a = c + b`, so change in `c` causes equal change in `a`
+- `∂J/∂c = ∂J/∂a * ∂a/∂c = 2 * 1 = 2`
+
+### Derivative of J with respect to b
+- `a = c + b`, so change in `b` causes equal change in `a`
+- `∂J/∂b = ∂J/∂a * ∂a/∂b = 2 * 1 = 2`
+
+### Derivative of J with respect to w
+- `c = w * x`, so a small increase in `w` causes `c` to decrease by `2 * epsilon`
+- `∂J/∂w = ∂J/∂c * ∂c/∂w = 2 * (-2) = -4`
+
+## Chain Rule Interpretation (Optional)
+- If familiar with calculus:
+  - `∂J/∂a = ∂J/∂d * ∂d/∂a`
+  - `∂J/∂c = ∂J/∂a * ∂a/∂c`
+  - `∂J/∂w = ∂J/∂c * ∂c/∂w`
+
+## Efficiency of Backpropagation
+- **Why right-to-left?**: Each intermediate derivative is reused; no redundant computation.
+- **Efficiency**:
+  - For `n` nodes and `p` parameters: takes about `n + p` steps.
+  - Naïve method would take `n * p` steps.
+  - Crucial for modern networks with millions of parameters.
+
+---
+- **Forward Prop**: Left-to-right to compute output and cost.
+- **Backward Prop**: Right-to-left to compute gradients.
+- **Computation Graph**: Breaks down calculations into reusable steps.
+- **Backprop**: Key to efficient training in deep learning frameworks.
+
+---
+# Intuition for Backprop - Computation Graph on a Larger Neural Network
+
+## Network Overview
+- **Architecture**: A small neural network with:
+  - One hidden layer
+  - One hidden unit (producing activation `a1`)
+  - One output unit (producing activation `a2`)
+- **Input/Output**:
+  - Input `x = 1`
+  - Target output `y = 5`
+- **Parameters**:
+  - `w1 = 2`, `b1 = 0`
+  - `w2 = 3`, `b2 = 1`
+- **Activation Function**: ReLU `g(z) = max(0, z)`
+- **Loss Function**: Squared error  
+  `J(w, b) = 1/2 * (a2 - y)^2`
+
+---
+
+## Forward Propagation
+
+### Step-by-Step Calculations
+- **Hidden Layer**:
+  - `z1 = w1 * x + b1 = 2 * 1 + 0 = 2`
+  - `a1 = g(z1) = max(0, 2) = 2`
+- **Output Layer**:
+  - `z2 = w2 * a1 + b2 = 3 * 2 + 1 = 7`
+  - `a2 = g(z2) = max(0, 7) = 7`
+- **Cost Function**:
+  - `J = 1/2 * (a2 - y)^2 = 1/2 * (7 - 5)^2 = 2`
+
+---
+
+## Computation Graph Construction
+
+### Intermediate Variables
+- `t1 = w1 * x = 2`
+- `z1 = t1 + b1 = 2`
+- `a1 = g(z1) = 2`
+- `t2 = w2 * a1 = 6`
+- `z2 = t2 + b2 = 7`
+- `a2 = g(z2) = 7`
+- `J = 1/2 * (a2 - y)^2 = 2`
+
+---
+
+
+### Step-by-Step Gradient Flow
+- Start by computing `∂J/∂a2 = a2 - y = 2`
+- Use chain rule to compute:
+  - `∂J/∂z2 = 2` (since ReLU is linear for z > 0)
+  - `∂J/∂b2 = ∂J/∂z2 = 2`
+  - `∂J/∂t2 = ∂J/∂z2 = 2`
+  - `∂J/∂w2 = ∂J/∂t2 * ∂t2/∂w2 = 2 * a1 = 4`
+  - `∂J/∂a1 = ∂J/∂t2 * w2 = 2 * 3 = 6`
+  - `∂J/∂z1 = ∂J/∂a1 * g’(z1) = 6 * 1 = 6` (since z1 > 0)
+  - `∂J/∂b1 = ∂J/∂z1 = 6`
+  - `∂J/∂w1 = ∂J/∂z1 * x = 6 * 1 = 6`
+
+---
+
+## Manual Gradient Check (Example)
+- Verify `∂J/∂w1 = 6` by checking actual change:
+  - Change `w1` from 2 to 2.001
+  - Then: `a1 = 2.001`, `a2 = 3 * 2.001 + 1 = 7.003`
+  - New cost: `J = 1/2 * (7.003 - 5)^2 ≈ 2.006`
+  - Change in cost: `≈ 0.006`, matches `6 * 0.001`
+
+---
+
+## Efficiency of Backpropagation
+- **Naive Gradient Estimation**:
+  - Bump each parameter slightly and recompute cost
+  - Computationally expensive: `O(N * P)` where:
+    - `N`: number of nodes
+    - `P`: number of parameters
+- **Backpropagation**:
+  - More efficient: `O(N + P)`
+  - Computes all gradients in one pass
+
+---
+
+## Automatic Differentiation (Autodiff)
+- **Modern Frameworks** (e.g., TensorFlow, PyTorch):
+  - Use computation graphs and autodiff
+  - Automatically calculate gradients
+- **Before Autodiff**:
+  - Researchers derived and implemented gradients manually using calculus
+- **Now**:
+  - Lower calculus requirement
+  - Easier implementation and experimentation with neural networks
+
+---
+
+
+- Computation graphs help break down forward and backward passes into manageable steps
+- Backprop efficiently computes gradients by using the chain rule
+- Autodiff makes training neural networks accessible and fast in practice
+
+---
+
+
+
+
 
 
 
