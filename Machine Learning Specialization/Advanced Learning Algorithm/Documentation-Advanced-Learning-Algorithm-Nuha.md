@@ -1192,10 +1192,6 @@ A_out = sigmoid(Z)               # activation function
 
 ## From Inference to Training
 
-- **Last week**: Focused on inference – computing outputs given inputs and model parameters.
-- **This week**: Learn how to **train** a neural network using your own data.
-
----
 
 ## Example: Handwritten Digit Classification
 
@@ -1240,7 +1236,7 @@ model.compile(
 ### Fit the Model to the Training Data
 
 - `model.fit(X, Y, epochs=n)` runs the training loop
-- `epochs`: how many full passes (iterations) over the training data
+- `epochs`: how many full passes (iterations) over the training data. Here, how many iterations for the gradient descent.
 
 ```python
 model.fit(X, Y, epochs=10)
@@ -1281,7 +1277,7 @@ model.fit(X, Y, epochs=10)
 - Use `model.fit(X, Y, epochs=100)` to train.
   - `epochs` define how many iterations of gradient descent to perform.
 - TensorFlow handles gradient descent internally.
-  - Uses **backpropagation** to compute gradients.
+  - Uses **backpropagation** to compute gradients(partial derivatives).
   - Uses optimized versions of gradient descent (e.g., Adam, SGD).
 
 ---
@@ -1357,8 +1353,8 @@ model.fit(X, Y, epochs=10)
 - **Behavior**:
   - Allows activations to be 0 or any positive number.
   - Helps model non-binary features like degrees of awareness.
-- **Name**: ReLU = Rectified Linear Unit
-  - Name origin is not important; just remember it's widely used.
+
+
 
 ## Common Activation Functions
 - **Sigmoid Function**:
@@ -1377,9 +1373,7 @@ model.fit(X, Y, epochs=10)
   - Often used in output layers for regression problems.
   - Equivalent to using **no activation function**.
 
-## Terminology
-- Some refer to linear activation as "no activation."
-- This class uses the term **linear activation function** instead of "no activation."
+
 
 ---
 
