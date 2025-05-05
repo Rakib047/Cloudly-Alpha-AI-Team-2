@@ -1525,17 +1525,7 @@ model.fit(X, Y, epochs=10)
   - Data may have multiple classes (e.g., circles, triangles, squares)
   - Algorithm learns **multi-region decision boundaries** to divide input space
 
-## Next Steps
 
-- **Softmax Regression**:
-  - Generalization of logistic regression to handle **multiple classes**.
-  - Learns to predict a **probability distribution** over all possible classes.
-  
-- **Neural Networks for Multiclass Classification**:
-  - Use softmax in the **output layer**.
-  - Train neural networks to handle more than two classes.
-
-> Multiclass classification extends binary classification by estimating probabilities across multiple discrete classes, and softmax regression is the key model enabling this in both traditional ML and neural networks.
 ---
 # Softmax Regression: Generalizing Logistic Regression for Multiclass Classification
 
