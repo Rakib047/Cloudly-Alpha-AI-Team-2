@@ -354,38 +354,46 @@ for the above figure
 
 - policy pi function -> take a state and output an action
 
-![alt text](image-99.png)
+<img width="513" alt="image" src="https://github.com/user-attachments/assets/9e390196-c345-459a-ba96-03fccf3e9850" />
+
 
 ## Summary
 
-![alt text](image-100.png)
+<img width="513" alt="image" src="https://github.com/user-attachments/assets/664e827e-9947-4be2-8629-41dc9f117fc2" />
+
 
 **The reinforcement learning process is known as Markov Decison Process**
 
-![alt text](image-101.png)
+<img width="513" alt="image" src="https://github.com/user-attachments/assets/c33415bc-22fc-4126-96e2-ffecb5e925d8" />
+
 
 ## How to pick actions
 
-![alt text](image-103.png)
+<img width="513" alt="image" src="https://github.com/user-attachments/assets/81a32394-106b-44f4-94b2-d5cb13dc1f8d" />
+
 
 **Discount factor affects the action of agent at each state**   
 
 ### Bellman Equation
 
-![alt text](image-104.png)
+<img width="513" alt="image" src="https://github.com/user-attachments/assets/67e11d4f-5ea4-4d78-911c-fb6643786e0c" />
+
 
 - An example
 - remember for terminal State Q(S,a)=R(s)
 
-![alt text](image-105.png)
+<img width="520" alt="image" src="https://github.com/user-attachments/assets/a8206b7f-3f10-4272-9942-f5a153cdeb25" />
+
 
 ### The core meaning of bellman equation
 
-![alt text](image-106.png)
+<img width="528" alt="image" src="https://github.com/user-attachments/assets/4b921b1e-172a-4f03-a374-916055e95125" />
+
 
 **Example of this**
 
-![alt text](image-107.png)
+<img width="513" alt="image" src="https://github.com/user-attachments/assets/c7926229-fc22-4ca6-b6ca-f8d17cde56c4" />
+
 
 ## Stochastic Reinforcement Learning
 
@@ -393,11 +401,13 @@ for the above figure
 
 - Instead of maximizing the return,rather we focus on maximizing the expected(average) return -> choose a policy according to this
 
-![alt text](image-108.png)
+<img width="513" alt="image" src="https://github.com/user-attachments/assets/7a85fddd-d9e8-4719-bac4-a1cceaeec535" />
+
 
 **So modified bellman equation for stochastic environment**
 
-![alt text](image-109.png)
+<img width="512" alt="image" src="https://github.com/user-attachments/assets/82f58ac0-c6e4-4bc0-a648-1a0c2ced7243" />
+
 
 ## Continuos State
 
@@ -405,32 +415,40 @@ for the above figure
 
 - here in the below example represented as a vector ->the value of the state
 
-![alt text](image-110.png)
+<img width="515" alt="image" src="https://github.com/user-attachments/assets/d3959344-e28f-4568-9022-b5679121e2cb" />
+
 
 ## Learning the state-value function(Q(s,a)) using deep neural network
 
-![alt text](image-111.png)
+<img width="515" alt="image" src="https://github.com/user-attachments/assets/cfb6030d-2236-43a9-949d-f6086b0be7ae" />
+
 
 ### But we need training example,how do we make it?
 
-![alt text](image-113.png)
+<img width="515" alt="image" src="https://github.com/user-attachments/assets/e8e9a03b-328e-4257-872d-a8715632a777" />
+
 
 **Now the main algorithm**
 
-![alt text](image-114.png)
+<img width="506" alt="image" src="https://github.com/user-attachments/assets/df9b2612-7078-48b4-ab82-f642e9a14f2e" />
+
 
 ## Improved Architecture
 
 - Previously we have to compute for all four of the Q(s,nothing),Q(s,left),Q(s,main),Q(s,right)
 
-![alt text](image-115.png)
+<img width="521" alt="image" src="https://github.com/user-attachments/assets/a74a0977-9d10-4a3f-8e17-69ebad710615" />
+
 
 - improved network is below 
 
-![alt text](image-116.png)
+<img width="497" alt="image" src="https://github.com/user-attachments/assets/5cbb0680-1276-41b2-9ace-85fdc1caa152" />
+
 
 ## How to take action while we still learning
 
-![alt text](image-117.png)
+<img width="473" alt="image" src="https://github.com/user-attachments/assets/d3bf5d5c-0cfc-4325-869b-ed913cc22be7" />
 
-![alt text](image-118.png)
+
+<img width="498" alt="image" src="https://github.com/user-attachments/assets/e12e3556-440c-4136-a7c6-fa788a72a942" />
+
