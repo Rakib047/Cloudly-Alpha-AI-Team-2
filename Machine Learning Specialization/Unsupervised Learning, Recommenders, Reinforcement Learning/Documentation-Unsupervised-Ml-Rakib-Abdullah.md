@@ -344,3 +344,93 @@ for the above figure
 
 <img width="698" alt="image" src="https://github.com/user-attachments/assets/6a668bce-90d4-4269-979b-ee7d37f03744" />
 
+# Week 3
+
+## Reinforcement Learning
+
+- State,Reward function,action (S,a,R(s),S')
+- When it is hard to give x and y mapping in supervised learning,we use reinforcement learning(just give a reward function)
+- how much reward we get in future is decided by discount factor
+
+- policy pi function -> take a state and output an action
+
+![alt text](image-99.png)
+
+## Summary
+
+![alt text](image-100.png)
+
+**The reinforcement learning process is known as Markov Decison Process**
+
+![alt text](image-101.png)
+
+## How to pick actions
+
+![alt text](image-103.png)
+
+**Discount factor affects the action of agent at each state**   
+
+### Bellman Equation
+
+![alt text](image-104.png)
+
+- An example
+- remember for terminal State Q(S,a)=R(s)
+
+![alt text](image-105.png)
+
+### The core meaning of bellman equation
+
+![alt text](image-106.png)
+
+**Example of this**
+
+![alt text](image-107.png)
+
+## Stochastic Reinforcement Learning
+
+- next state can be random
+
+- Instead of maximizing the return,rather we focus on maximizing the expected(average) return -> choose a policy according to this
+
+![alt text](image-108.png)
+
+**So modified bellman equation for stochastic environment**
+
+![alt text](image-109.png)
+
+## Continuos State
+
+- state value can take continuos values,not just fixed certain numbers
+
+- here in the below example represented as a vector ->the value of the state
+
+![alt text](image-110.png)
+
+## Learning the state-value function(Q(s,a)) using deep neural network
+
+![alt text](image-111.png)
+
+### But we need training example,how do we make it?
+
+![alt text](image-113.png)
+
+**Now the main algorithm**
+
+![alt text](image-114.png)
+
+## Improved Architecture
+
+- Previously we have to compute for all four of the Q(s,nothing),Q(s,left),Q(s,main),Q(s,right)
+
+![alt text](image-115.png)
+
+- improved network is below 
+
+![alt text](image-116.png)
+
+## How to take action while we still learning
+
+![alt text](image-117.png)
+
+![alt text](image-118.png)
