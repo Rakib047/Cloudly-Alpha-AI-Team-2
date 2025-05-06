@@ -2146,6 +2146,236 @@ model.fit(X, Y, epochs=10)
 
 ---
 
+**Week 3**
+
+- train test split 70%, 30%
+- fitting parameter by minimizing cost function `j (w, b)`:
+`J(w, b) = (1/2m) Σ [f(xᵢ) - yᵢ]² + (λ/2m) Σ wⱼ²`
+- Compute test error (doesn't include the regularization term): `J_test(w, b) = (1/2m_test) Σ [f(xᵢ_test) - yᵢ_test]²`
+- Compute training error: `J_train(w, b) = (1/2m_train) Σ [f(xᵢ_train) - yᵢ_train]²`
+
+
+
+
+## Misclassification Rate (Alternative Metric)
+- **More Common in Classification**:
+- Predict:
+  ```
+  ŷ = 1 if f(x) ≥ 0.5; ŷ = 0 if f(x) < 0.5
+  ```
+- Then compute:
+  - `J_test`: Fraction of misclassified test examples.
+  - `J_train`: Fraction of misclassified training examples.
+
+---
+
+## Three-Way Data Split
+
+### 1. **Split the Data**
+- **Training set**: ~60% (used to fit parameters `w`, `b`)
+- **Cross-validation (CV) set**: ~20% (used to select model)
+- **Test set**: ~20% (used only for final performance estimate)
+
+---
+
+- High bias (underfit): `J_train` will be high
+- High variance (overfit): `j_train` low
+- High Bias → `J_train` is high, `J_cv` ≈ `J_train`
+- High Variance → `J_train` is low, `J_cv` ≫ `J_train`
+- Balanced Model → Both `J_train` and `J_cv` are low and close
+
+---
+
+## Bias & Variance vs. Model Complexity
+
+- **Effect of Increasing Model Complexity (d = degree of polynomial)**
+  - As `d` increases:
+    - `J_train` decreases (better fit to training data)
+    - `J_cv` first decreases (less bias), then increases (more variance)
+  - Graph: U-shaped curve for `J_cv` with increasing `d`
+
+- **Bias-Variance Tradeoff**
+  - Low `d` → High bias, high `J_train`, high `J_cv`
+  - High `d` → Low bias, low `J_train`, high variance, high `J_cv`
+  - Optimal `d` → Low `J_train`, low `J_cv`
+
+---
+
+## Edge Case: High Bias & High Variance
+
+- **Possible in Complex Models (e.g., Neural Networks)**
+  - `J_train` is high AND `J_cv` is much higher.
+  - Model underfits some parts of the input and overfits others.
+  - Rare in linear models with 1D input, more common in complex scenarios.
+
+---
+
+## Regularization Impact
+
+- **Too Small λ (or λ = 0)**:
+  - Overfitting.
+  - Low training error, high cross-validation error.
+  - High variance.
+
+- **Too Large λ**:
+  - Underfitting.
+  - High training and cross-validation error.
+  - High bias.
+
+- **Just Right λ**:
+  - Balanced bias and variance.
+  - Low training and cross-validation error.
+  - Generalizes well.
+
+- **Cross-Validation** is the tool to systematically find this optimal λ value.
+
+---
+
+- **Training error (`J_train`)**: 10.8%
+- **Cross-validation error (`J_cv`)**: 14.8%
+- **Human-level error (baseline)**: 10.6%
+
+#### Analysis:
+- Training error is **only 0.2% worse than humans** → **low bias**
+- CV error is **4% higher than training** → **high variance**
+
+---
+
+## Diagnosing with Learning Curves
+
+| Problem       | `J_train` vs Baseline | `J_cv` vs `J_train` | Implication                         |
+|---------------|------------------------|----------------------|--------------------------------------|
+| High Bias     | Large gap              | Small gap            | Underfitting – model too simple      |
+| High Variance | Small gap              | Large gap            | Overfitting – model too complex      |
+| Both          | Large gap              | Large gap            | Needs both better model and regularization/data |
+
+---
+
+### Common Strategies:
+1. **Get more training examples**
+2. **Try smaller set of features**
+3. **Add additional features**
+4. **Add polynomial features**
+5. **Decrease regularization (lambda)**
+6. **Increase regularization (lambda)**
+
+---
+
+
+
+| Strategy                         | Helps With        | Explanation |
+|----------------------------------|-------------------|-------------|
+| **Get more training examples**   | High Variance     | More data helps generalization, reduces overfitting. |
+| **Try smaller set of features**  | High Variance     | Reduces model complexity and chance of overfitting. |
+| **Add additional features**      | High Bias         | Makes the model more expressive to fit the training data better. |
+| **Add polynomial features**      | High Bias         | Adds complexity, helps fit training data more accurately. |
+| **Decrease lambda**              | High Bias         | Reduces regularization, allows model to fit training data better. |
+| **Increase lambda**              | High Variance     | Adds regularization, prevents overfitting by simplifying the model. |
+
+---
+
+
+
+- **High Variance Fixes**:
+  - Get more training data.
+  - Simplify the model (fewer features, increase lambda).
+
+- **High Bias Fixes**:
+  - Make the model more complex (add features/polynomials).
+  - Reduce regularization (decrease lambda).
+
+---
+
+# Neural Networks and the Bias-Variance Tradeoff
+
+## Overview
+Neural networks, especially large ones combined with big data, provide powerful tools to tackle both high bias and high variance—altering the traditional approach to the bias-variance tradeoff.
+
+---
+
+## Bias-Variance Tradeoff
+
+- **High Bias (Underfitting)**:
+  - Simple models like linear or low-degree polynomials.
+  - Poor performance even on the training set.
+
+- **High Variance (Overfitting)**:
+  - Complex models like high-degree polynomials.
+  - Good training set performance, poor cross-validation/generalization.
+
+- **Traditional approach**:
+  - Balance model complexity or regularization (λ) to trade off bias and variance.
+  - Find a sweet spot that minimizes cross-validation error.
+
+---
+
+- **Large neural networks** trained on small to moderately sized datasets tend to have **low bias**.
+- This offers a **new recipe** to reduce bias or variance without a strict tradeoff.
+
+---
+
+## Training Neural Networks
+
+1. **Train model on the training set.**
+2. **Evaluate J_train** (training error):
+   - If high → High bias → Use a **larger neural network**.
+   - Increase hidden layers or units.
+
+3. **If J_train is low**, evaluate J_cv (cross-validation error):
+   - If high → High variance → **Get more training data**.
+   - Repeat the process.
+
+4. **Repeat until** both training and cross-validation errors are low.
+   - Goal: Good generalization performance.
+
+---
+
+
+
+- **Large neural networks** can fit complex functions and reduce bias.
+- **With proper regularization**, they can also **prevent overfitting** and reduce variance.
+- This eliminates the traditional need to trade off model complexity carefully.
+
+---
+
+## Regularization in Neural Networks
+
+- **Cost function**: Includes average loss + regularization term.
+- **Regularization term**:  
+  ```math
+  \frac{\lambda}{2m} \sum W^2
+  ``` 
+  - Sum over all weights \( W \), excluding biases.
+  - Same idea as in linear/logistic regression.
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
