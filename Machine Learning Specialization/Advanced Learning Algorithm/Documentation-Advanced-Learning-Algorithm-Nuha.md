@@ -4,11 +4,7 @@
 - Neural networks were originally designed to **mimic the human brain**.
 - Biological inspiration remains, but modern neural networks have **evolved far** from actual brain processes.
 
-- **History of Neural Networks**:
-  - **1950s**: Neural networks research began.
-  - **1980s-1990s**: Regained popularity, especially for tasks like **handwritten digit recognition** (e.g., postal codes, checks).
-  - **Late 1990s**: Fell out of favor again.
-  - **Post-2005**: Resurgence with the term **deep learning**, leading to rapid advancement.
+
 
 - **Deep Learning Branding**:
   - "Deep learning" sounds more appealing, which helped it **gain attention and momentum**.
@@ -2349,6 +2345,341 @@ Neural networks, especially large ones combined with big data, provide powerful 
   - Same idea as in linear/logistic regression.
 
 ---
+
+## Iterative Development Loop
+
+1. **Choose Overall System Architecture**
+   - Select the model (e.g., logistic regression, neural network).
+   - Choose input data, features, and initial hyperparameters.
+
+2. **Train the Model**
+   - Implement and train using the selected architecture.
+   - The initial model will often perform suboptimally.
+
+3. **Run Diagnostics**
+   - Evaluate **bias and variance**.
+   - Perform **error analysis** (covered in next video).
+   - These diagnostics guide you on what to improve.
+
+4. **Make Informed Adjustments**
+   - Increase model complexity (e.g., more layers/units).
+   - Tune regularization parameters (e.g., λ).
+   - Add more data or features.
+   - Remove unhelpful features.
+   - Then **retrain** and iterate again.
+
+5. **Repeat Until Performance is Satisfactory**
+   - Continue this cycle of tweaking, training, and evaluating.
+
+---
+
+  - If **pharmaceutical spam** is common:
+    - Collect more targeted examples of that spam type.
+    - Engineer features based on drug/product names.
+  - If **phishing** is common:
+    - Examine URLs in the email.
+    - Create features detecting suspicious link patterns.
+  - If **misspellings** are rare:
+    - Avoid over-prioritizing features or algorithms to catch them.
+
+---
+
+  - Fix the dataset.
+  - Focus on tuning models/algorithms (e.g., logistic regression, neural nets).
+- **Data-Centric** (Emerging best practice):
+  - Focus on improving the **quality and quantity of data**.
+  - Often more effective than algorithm tweaks.
+  - Includes:
+    - Collecting targeted data.
+    - Applying data augmentation.
+    - Generating synthetic data.
+
+- Use **error analysis** to inform where more data is most needed.
+- Apply **data augmentation** to generate realistic variations of training data.
+- Use **data synthesis** to create new labeled data when possible.
+- Adopt a **data-centric mindset**—optimize your dataset, not just your model.
+- Consider **transfer learning** when data is limited.
+
+---
+
+- **Options for Fine-Tuning**
+  - **Option 1: Train Only the Output Layer**
+    - Freeze W¹–W⁴ and train only W⁵, b⁵ on the new dataset.
+    - Better for very small datasets.
+  - **Option 2: Fine-Tune All Layers**
+    - Initialize with pre-trained weights but allow all layers to update during training.
+    - Better for moderately sized datasets.
+
+---
+
+1. **Scope the project**
+2. **Collect initial data**
+3. **Train and evaluate the model**
+4. **Iteratively improve through error analysis and data updates**
+5. **Deploy to production**
+6. **Monitor and maintain the system**
+7. **Update the model based on real-world usage**
+8. **Integrate MLOps for robust, scalable deployment**
+---
+
+| Predicted \ Actual | 1 (Positive) | 0 (Negative) |
+|--------------------|--------------|--------------|
+| **1 (Positive)**   | True Positive (TP)  | False Positive (FP) |
+| **0 (Negative)**   | False Negative (FN) | True Negative (TN)  |
+
+Each term explained:
+- **True Positive (TP)**: Model correctly predicts positive.
+- **False Positive (FP)**: Model incorrectly predicts positive.
+- **False Negative (FN)**: Model incorrectly predicts negative.
+- **True Negative (TN)**: Model correctly predicts negative.
+
+### Precision
+
+- **Definition**: Of all the examples predicted as positive, what fraction is truly positive?
+- **Formula**:  
+  `Precision = TP / (TP + FP)`
+- **Interpretation**: Measures the **accuracy of positive predictions**.
+
+- **Example**:  
+  - TP = 15, FP = 5 → Precision = 15 / (15 + 5) = 0.75 or 75%
+
+---
+
+### Recall
+
+- **Definition**: Of all the actual positive examples, what fraction did the model detect?
+- **Formula**:  
+  `Recall = TP / (TP + FN)`
+- **Interpretation**: Measures the model’s **ability to find all positive cases**.
+
+- **Example**:  
+  - TP = 15, FN = 10 → Recall = 15 / (15 + 10) = 0.6 or 60%
+
+---
+
+## Model Usefulness with Precision & Recall
+
+- A model that predicts only Y=0:
+  - Precision = 0 (or undefined → treated as 0)
+  - Recall = 0
+- **Zero precision or recall** = model is **not useful**.
+- **Goal**: Achieve both **high precision and high recall** to ensure the model is:
+  - Accurate in its positive predictions.
+  - Finding a significant portion of actual positive examples.
+
+---
+
+# Precision-Recall Trade-off and F1 Score
+
+## Ideal Scenario
+- **High Precision & High Recall**: Desirable for a learning algorithm.
+  - **High Precision**: When the model predicts disease, it's usually correct.
+  - **High Recall**: If a patient has the disease, the model likely identifies it.
+
+## Precision and Recall Refresher
+- **Precision** = TP / (TP + FP): Of predicted positives, how many are correct.
+- **Recall** = TP / (TP + FN): Of actual positives, how many were detected.
+
+## Thresholding and Trade-offs
+- **Logistic Regression Output**: Gives a value between 0 and 1.
+- **Default Threshold**: Usually 0.5.
+- **Raising Threshold (e.g., 0.7 or 0.9)**:
+  - Predict positive only when very confident.
+  - **Effect**:
+    - ↑ Precision
+    - ↓ Recall
+- **Lowering Threshold (e.g., 0.3 or 0.1)**:
+  - Predict positive even with low confidence.
+  - **Effect**:
+    - ↓ Precision
+    - ↑ Recall
+
+## Choosing the Right Threshold
+- **High Threshold**:
+  - Use when false positives are costly.
+  - High confidence needed to predict positive.
+- **Low Threshold**:
+  - Use when false negatives are worse.
+  - Safer to catch more positives even if some are wrong.
+- **Manually Pick Threshold**: Based on application needs; not done via cross-validation.
+
+## Precision-Recall Curve
+- **Plotting PR Curve**:
+  - Vary threshold to get different precision/recall pairs.
+  - Helps visualize trade-off.
+  - Used to choose the most balanced point.
+
+## F1 Score - Automatic Metric for Trade-off
+- **Motivation**:
+  - Precision & Recall are two metrics—hard to compare multiple models.
+  - Average of Precision and Recall is misleading.
+- **F1 Score Definition**:
+  - Harmonic Mean of Precision (P) and Recall (R):
+    ```
+    F1 = 2 * (P * R) / (P + R)
+    ```
+  - Emphasizes the lower of the two metrics more than arithmetic mean.
+- **F1 Use Case**:
+  - Best when need to balance precision and recall.
+  - Helps rank models with one score.
+  - Useful when no clear winner from just looking at P & R separately.
+
+---
+
+- **Root**: Top of the tree (contrary to real trees; think of a hanging plant analogy).
+- **Leaves**: Bottom nodes that make predictions.
+- **Tree Traversal**: Move down the tree based on feature values to reach a prediction.
+---
+
+## Key Decisions in the Tree Building Process
+
+### 1. **Choosing the Best Feature to Split On**
+- **Goal**: Maximize **purity** at each node.
+- **Purity Definition**: A node is pure if it contains only one class (all cats or all dogs).
+- **Ideal (Hypothetical) Feature**: A perfect feature like "cat DNA" would result in completely pure splits.
+- **Realistic Comparison**:
+  - Ear shape: 4/5 cats on one side, 1/5 on the other.
+  - Face shape: 4/7 vs 1/3 distribution.
+  - Whiskers: 3/4 cats on one side, 2/6 not cats on the other.
+- **Algorithm Goal**: Pick the feature that results in the most pure subgroups.
+
+### 2. **Deciding When to Stop Splitting**
+- **Criteria for Stopping**:
+  - **Complete Purity**: All examples in a node belong to one class.
+  - **Maximum Depth**: Set a limit on tree depth (e.g., depth = 2). Prevents overfitting and keeps tree manageable.
+  - **Minimum Improvement in Purity**: Stop if the gain in purity (reduction in impurity) is too small.
+  - **Minimum Number of Examples**: If a node has too few examples (e.g., < 3), stop splitting to avoid overfitting.
+
+---
+
+H(p₁) = -p₁ * log₂(p₁) - p₀ * log₂(p₀)
+
+H(p₁) = -p₁ * log₂(p₁) - (1 - p₁) * log₂(1 - p₁)
+
+---
+
+Information Gain = Entropy(root) - [w_left * Entropy(left) + w_right * Entropy(right)]
+
+- `w_left`, `w_right`: Fraction of examples that go left/right.
+- `Entropy(p) = -p * log2(p) - (1 - p) * log2(1 - p)`
+- Use `0 * log2(0) = 0` by convention.
+
+1. Compute entropy of the root node.
+2. For each feature:
+ - Split data based on feature.
+ - Compute entropy for left and right branches.
+ - Compute weighted average entropy.
+ - Compute information gain.
+3. Select feature with the highest information gain to split on.
+4. Repeat recursively at child nodes until stopping criteria are met.
+
+---
+
+## Recursive Tree Construction
+
+- **Start at the Root Node**
+  - Contains all training examples.
+  - Compute information gain for all features.
+  - Split on the feature with the highest information gain.
+
+- **Create Sub-branches**
+  - Divide data based on the selected feature.
+  - Send examples to left/right branch depending on their feature value.
+
+- **Repeat Splitting**
+  - Apply the same logic recursively to each sub-branch.
+  - At each node, treat it as a new "root" and repeat information gain computation.
+
+---
+
+## Stopping Criteria
+
+Splitting stops when any of the following conditions are met:
+- **Entropy = 0**: Node contains only one class (pure subset).
+- **Maximum Depth Reached**: Tree has grown to its depth limit.
+- **Low Information Gain**: Further splits don’t significantly reduce entropy.
+- **Few Examples**: Number of examples in node falls below a threshold.
+
+---
+
+- In each row, **exactly one of the one-hot features is 1**, rest are 0.
+- The "1" represents the **active or "hot" category**, giving the technique its name.
+
+---
+
+- Decision trees handle continuous features by:
+  - Trying multiple **thresholds** to split the data.
+  - Calculating **information gain** at each threshold.
+  - Choosing the threshold (and feature) with **maximum info gain**.
+
+---
+
+## Advantages of Tree Ensembles
+- **Improved Accuracy**:
+  - Aggregating multiple trees helps cancel out individual errors.
+- **Robustness**:
+  - Reduces the influence of any single tree’s decision.
+- **Stability**:
+  - Final model is less affected by small perturbations in data.
+
+---
+
+- Each **random training set** leads to a **different decision tree**.
+- Sampling with replacement is used to create **multiple varied trees** from the same original data.
+- These varied trees form the **tree ensemble**.
+
+---
+
+- **Problem with Bagged Trees**:
+  - Even with different sampled datasets, trees may use **same features** for top splits (e.g., root node), leading to **similar trees**.
+
+- **Solution: Random Feature Subset Selection**:
+  - At each node in the tree:
+    - Instead of evaluating **all N features**, randomly choose a subset of **K < N features**.
+    - Choose the best feature to split **only from this subset**.
+  - This increases **tree diversity**, improving ensemble performance.
+
+- **Typical Value for K**:
+  - For large N (dozens or hundreds): **K = √N**
+  - For small N (e.g., 3 features), the method has less impact but is still valid.
+
+---
+
+- **XGBoost** stands for **eXtreme Gradient Boosting**.
+- One of the **most widely used and effective** decision tree ensemble algorithms.
+- Common in **ML competitions (e.g., Kaggle)** and **commercial applications**.
+- Known for being **fast**, **efficient**, and **accurate**.
+
+---
+
+##  From Bagged Trees to Boosted Trees
+- **Original Approach (Bagging)**:
+  - Create B trees using **sampling with replacement**.
+  - Each tree trained independently on a new bootstrapped dataset.
+
+- **Boosting Idea**:
+  - Trees are trained **sequentially**, not independently.
+  - Each new tree focuses on the **errors of the previous trees**.
+
+---
+
+- **Use XGBoost (tree ensembles)**:
+  - When working with **structured/tabular data**.
+  - When **training speed** and **moderate interpretability** are important.
+
+- **Use Neural Networks**:
+  - When working with **unstructured or mixed data**.
+  - When **transfer learning** or **complex model chaining** is needed.
+
+---
+
+
+
+
+
+
+
+
 
 
 
