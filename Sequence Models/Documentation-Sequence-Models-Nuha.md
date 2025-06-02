@@ -989,3 +989,137 @@
 - **Still an active research area** with ongoing advancements.
 - These techniques help promote fairer AI systems and more ethical use of machine learning.
 ---
+# Sequence-to-Sequence Models & Image Captioning
+
+- **Sequence-to-sequence (seq2seq) models** are used for tasks like machine translation and speech recognition.
+- Introduced in two influential papers:
+
+## Sequence-to-Sequence Model for Machine Translation
+
+### Task Example
+- **Input**: French sentence: *Jane visite l'Afrique Septembre*
+- **Output**: English translation: *Jane is visiting Africa in September*
+
+### Model Structure
+- **Encoder**:
+  - Implemented as an RNN (GRU or LSTM)
+  - Reads the input sequence word-by-word
+  - Outputs a fixed-length **context vector** representing the entire input sentence
+- **Decoder**:
+  - Takes the context vector as input
+  - Outputs translated words one at a time
+  - Stops when it emits an end-of-sequence token
+
+### Training
+- Train using many pairs of input (e.g., French) and output (e.g., English) sequences
+- Use teacher forcing during training (feed ground-truth word as next input)
+
+### Remarkable Result
+- With sufficient data, this basic model architecture performs **surprisingly well** for machine translation tasks.
+
+---
+
+## Image Captioning with Sequence Models
+
+### Task Example
+- **Input**: Image (e.g., cat sitting on a chair)
+- **Output**: Text caption: *A cat sitting on a chair*
+
+### Model Architecture
+- **Image Encoder**:
+  - Use a pre-trained CNN (e.g., AlexNet) without the final softmax layer
+  - Outputs a high-dimensional feature vector (e.g., 4096D) representing the image
+- **Text Decoder**:
+  - An RNN takes the image feature vector as input
+  - Outputs the caption one word at a time
+
+---
+- Image-to-sequence models operate similarly to sequence-to-sequence models in NLP
+- Especially effective when captions are **short and simple**
+- Multiple groups proposed similar image captioning models independently around the same time:
+  - Junhua Mao, Wei Xu, Yi Yang, Jiang Wang, Alan L. Yuille
+  - Andrej Karpathy and Fei-Fei Li
+
+---
+
+## Key Differences from Language Modeling
+- **Language modeling** may sample randomly from the next-word distribution
+- **Seq2seq translation/captioning**: Often aim for the **most likely** sequence rather than sampling randomly
+  - Important to generate coherent and accurate outputs
+
+---
+
+# Conditional Language Models & Machine Translation
+
+## Language Model (Baseline)
+- Trained to estimate the **probability of a sentence**.
+- Can be used to generate novel sentences by sampling one word at a time.
+- Often starts generation with a vector of all zeros.
+- Words are generated sequentially: output word at time `t-1` is fed as input at time `t`.
+
+---
+
+## Machine Translation Model
+
+### Architecture
+- Composed of:
+  - **Encoder network** (green): Processes input French sentence into a context vector.
+  - **Decoder network** (purple): Generates English translation one word at a time.
+- Decoder is similar to a standard language model, but starts with the encoded input vector instead of zeros.
+
+### Conditional Language Modeling
+- The model estimates the probability of an English translation **conditioned on** the French input:
+  ```
+  p(y | x)
+  ```
+  Where `x` is the French sentence and `y` is the English translation.
+
+---
+
+## Translation as Conditional Probability
+- Given a French input, the model predicts the probabilities of various English outputs.
+- **Example**:
+  - French input: *Jane visite l’Afrique en septembre*
+  - Model computes the probability of several English sentences like:
+    - *Jane is visiting Africa in September*
+    - *In September, Jane will visit Africa*
+    - *Her African friend welcomed Jane in September*
+- These outputs vary in quality — some are good, some are verbose, and some incorrect.
+
+---
+
+## Why Not Random Sampling?
+- Sampling randomly from `p(y | x)` might give:
+  - Correct but verbose translations
+  - Awkward phrasing
+  - Incorrect translations
+- **Goal**: Find the **most likely** translation, not just any plausible one.
+
+---
+
+## Greedy Search (Naive Approach)
+- Greedy search generates the sentence by:
+  1. Picking the most likely word at each step.
+  2. Choosing the best next word **based only on the current sequence**.
+- **Problem**: This can lead to suboptimal translations.
+  - Example: Preferring “Jane is going…” over “Jane is visiting…” because “going” is more common.
+  - Greedy decisions early on can trap the model into poor completions.
+
+---
+
+## Search Space Challenge
+- The number of possible English sentences is **exponentially large**.
+  - For 10-word outputs with a 10,000-word vocabulary:
+    - \( 10,000^{10} \) possible combinations
+- Exhaustive search is computationally infeasible.
+
+---
+
+## Solution: Approximate Search Algorithms
+- Use search algorithms to find high-probability sentences without evaluating all combinations.
+- Goal: Find a good approximation of the sentence that **maximizes** `p(y | x)`.
+- Common method: **Beam Search** (explained in the next lesson)
+  - Efficient and typically yields high-quality translations.
+  - Not guaranteed to find the absolute best sentence, but works well in practice.
+
+---
