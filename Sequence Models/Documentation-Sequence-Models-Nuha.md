@@ -1123,3 +1123,301 @@
   - Not guaranteed to find the absolute best sentence, but works well in practice.
 
 ---
+
+# Beam Search Algorithm 
+
+
+
+- **Beam Search** is a widely used algorithm to find the most likely output sentence from a model.
+- It is an **approximate search algorithm** used to select the best output sequence by exploring multiple possibilities at each step.
+
+---
+
+## How Beam Search Works
+
+### Step 1: Choose the First Word
+- Given the input (e.g., French sentence), use the encoder-decoder model to evaluate the probability of each word in the vocabulary as the **first word**.
+- **Beam Width (B)**: Number of options to consider at each step.  
+  - Example: If B = 3, keep the top 3 most likely first words (e.g., "in", "jane", "september").
+
+### Step 2: Expand to Second Word
+- For each of the top B first words:
+  - Feed the decoder with that word and compute the probabilities for all possible second words (10,000 vocabulary size).
+  - This results in B × 10,000 combinations (e.g., 30,000 if B=3).
+- **Score = P(y1|x) × P(y2|y1, x)** → Select top B combinations.
+
+### Step 3: Third Word and Beyond
+- For each of the selected B pairs (y1, y2), repeat the process:
+  - Use the decoder, feed in y1 and y2, compute probabilities for y3.
+  - Score each triplet: **P(y1|x) × P(y2|y1,x) × P(y3|y1,y2,x)**
+  - Again, select top B combinations and continue the process.
+- Repeat until the `<EOS>` (end of sentence) token is generated.
+
+---
+
+# Beam Search - Refinements
+
+## Length Normalization
+
+- **Problem with raw probabilities**: Multiplying many probabilities (all < 1) leads to very small numbers → *numerical underflow*.
+- **Solution – Use log probabilities**:  
+  - Convert product of probabilities into sum of log-probabilities for numerical stability.  
+  - `log(p(y | x)) = sum(log(p(yt | x, y1,...,yt-1)))`
+  - Logarithm is strictly increasing → maximizing log-probability still gives same best sequence as original.
+
+---
+
+## Penalizing Long Sentences (and Fix)
+
+- **Issue with long outputs**:
+  - Multiplying many <1 values → smaller probability.
+  - Log-probability sum becomes more negative → discourages long translations.
+- **Fix – Normalize by sentence length**:
+  - Instead of summing log-probabilities, use average:
+    - `1/Ty * sum(log(p(yt | ...)))`
+  - Reduces bias against longer outputs.
+  - Prevents over-preference for short translations.
+
+---
+
+## Heuristic – Length Normalization Power (α)
+
+- **Generalized normalization**:  
+  - Use `sum(log(p)) / Ty^α` instead of `Ty` directly.
+  - Hyperparameter `α` ∈ [0, 1]:
+    - α = 0 → no normalization (raw sum)
+    - α = 1 → full normalization (average)
+    - Typical value: `α ≈ 0.7`
+
+
+---
+
+## Search Steps and Final Output
+
+- **Track top sentences at each length**:  
+  - Run beam search for `N` steps (e.g., N = 30).
+  - Keep beam width `B` hypotheses at each step.
+- **Final scoring**:  
+  - Re-score all seen sentence candidates using normalized log-probability.
+  - Output sentence with **highest normalized score**.
+
+---
+
+## Choosing Beam Width (B)
+
+- **Large beam width**:
+  - Pros: More search paths → better result.
+  - Cons: Slower, more memory intensive.
+- **Small beam width**:
+  - Pros: Fast and memory efficient.
+  - Cons: Worse performance due to limited hypothesis.
+
+- **Diminishing returns**:
+  - Big gains going from 1 → 3 → 10.
+  - Less improvement beyond 100s or 1000s.
+
+---
+
+## Beam Search vs Classic Search Algorithms
+
+- **Not exact search**:
+  - Beam Search ≠ BFS/DFS from traditional CS.
+  - It is an *approximate* search algorithm.
+  - Faster, but not guaranteed to find global optimum (true argmax).
+- **Trade-off**:
+  - Accuracy vs computation.
+
+---
+
+# Error Analysis with Beam Search
+
+## Purpose of Error Analysis
+- Helps identify whether performance issues are due to the **beam search algorithm** or the **RNN model**.
+- Enables more efficient use of time by focusing on the true bottleneck (model vs search).
+
+## Components of the System
+- **RNN Model (Encoder-Decoder)**: Computes \( P(y|x) \), i.e., probability of output translation given input.
+- **Beam Search Algorithm**: Approximate (heuristic) method to find the translation \( y \) that maximizes \( P(y|x) \).
+
+## Common Mistake Example
+- **Human Translation** (y\*): "Jane visits Africa in September"
+- **Beam Search Output** (ŷ): "Jane visited Africa last September"
+- The output ŷ changes the meaning — it’s an incorrect translation.
+
+## Outcome of Analysis
+- **If most errors are due to Beam Search**:
+  - Consider increasing beam width.
+- **If most errors are due to RNN**:
+  - Consider model improvements: more data, regularization, different architecture, etc.
+---
+
+# BLEU Score 
+
+
+- **BLEU Score**: Stands for *Bilingual Evaluation Understudy*. It is a metric for automatically evaluating the quality of machine-generated translations against human references.
+
+## Motivation
+- **Multiple Valid Translations**: Unlike tasks like image classification, machine translation can have many correct outputs for a given input.
+- **Need for Automation**: BLEU acts as an “understudy” to human evaluation, providing a quick and automatic scoring method.
+- **Use Cases**: Commonly used in machine translation, image captioning, and other text generation tasks where multiple outputs may be valid.
+
+## Basic Idea
+- **Goal**: Measure how close the machine translation (MT) output is to one or more human references.
+- **Approach**: Compute overlap of *n-grams* between MT output and reference translations.
+
+## Modified Precision
+- **Precision**: Initially measured by how many words in the MT output appear in references.
+- **Issue**: A bad sentence like “the the the the the” could have high precision if words repeat.
+- **Modified Precision**: 
+  - **Clip counts** to the maximum number of times a word appears in any reference.
+  - **Example**: If "the" appears max 2 times in references, only 2 of 7 "the"s are counted → Precision = 2/7.
+
+## N-gram Precision
+- **N-grams**: Consecutive word sequences (e.g., unigrams, bigrams, trigrams).
+- **Bigram Example**: 
+  - MT output: "the cat the cat on the mat"
+  - Bigrams: "the cat", "cat the", "cat on", "on the", "the mat"
+  - **Clipping**: Only count each bigram up to how often it appears in references.
+
+## Modified Precision Formula
+- For unigrams:
+  ```
+  P₁ = Σ (clipped count of unigram) / Σ (total count of unigram in MT output)
+  ```
+- For n-grams:
+  ```
+  Pₙ = Σ (clipped count of n-gram) / Σ (total count of n-gram in MT output)
+  ```
+
+## Final BLEU Score
+- **Combine Precisions**: Compute average of P₁, P₂, P₃, P₄
+  ```
+  BLEU = BP * exp(Σₙ wₙ * log(Pₙ))  (usually wₙ = 1/4 for n=1 to 4)
+  ```
+- **BP (Brevity Penalty)**: 
+  - Penalizes short translations (as short outputs tend to inflate precision).
+  - Formula:
+    - If MT output length > reference length: BP = 1
+    - Else: BP = exp(1 - r/c)  
+      - where `r` = length of reference, `c` = length of MT output
+
+## Key Properties
+- **Perfect Score**: BLEU = 1 if MT output matches a reference exactly.
+- **Interpretable Metric**: Helps compare systems quickly via a single number.
+- **Caveats**: Not perfect. Doesn’t always capture meaning or fluency.
+---
+
+# Attention Model 
+
+## Introduction to the Attention Model
+- **Encoder-Decoder Architecture Limitations**: Traditional encoder-decoder RNNs read the entire input sentence into a fixed-size vector before decoding, which works well for short sentences but struggles with long sentences.
+- **Motivation for Attention**: Long sentences reduce performance (e.g., BLEU score drops) because memorizing the entire input in a single vector is hard. Human translators translate incrementally, focusing on one part of the input at a time.
+
+## Performance Trends
+- **BLEU Score Analysis**:
+  - High BLEU for short sentences.
+  - Significant drop for long sentences (30–40+ words).
+- **Attention Fixes This**: Allows the model to “look at” relevant parts of the input at each decoding step, improving translation quality even for long sentences.
+
+## Key Idea of Attention
+- **Incremental Focus**: The model learns to pay attention to specific words in the input while generating each word in the output, similar to how humans work.
+- **Bidirectional RNN Encoder**:
+  - Processes input sentence and creates feature vectors for each input position.
+  - Captures context from both directions.
+
+## Decoder with Attention
+- **Hidden States**: Uses `Sₜ` to denote decoder hidden states to avoid confusion with encoder activations.
+- **Context Vector `Cₜ`**:
+  - Dynamically computed at each time step.
+  - Aggregates relevant encoder features weighted by attention scores.
+
+## Attention Weights (α)
+- **Attention Score αₜₜ'**: When generating the t-th output word, αₜₜ' represents the attention weight on the t'-th input word.
+- **Weights are Learned**:
+  - At each decoder step `t`, a set of αₜₜ' values are computed over all encoder time steps.
+  - Used to compute the context vector `Cₜ` via a weighted sum of encoder activations.
+
+## Decoding Steps with Attention
+- **Step-by-step Generation**:
+  - Step 1: Generate first output word (`Jane`), compute attention weights α₁₁ to α₁₅ over French input.
+  - Step 2: Generate second word (`visits`), use `S₁`, previous word, and new α₂₁ to α₂₅ for updated context.
+  - Step 3: Continue similarly, each time using prior state, context vector, and attention weights.
+- **EOS Generation**: Continues until end-of-sequence token is generated.
+---
+
+
+
+# Attention Model
+
+
+## Input Representation
+- A **bidirectional RNN/GRU/LSTM** is used to process the input sentence.
+- Each word in the input is encoded into features:
+  - `→ a_forward(t')` - Forward activation.
+  - `← a_backward(t')` - Backward activation.
+- These are concatenated to form `a(t')`, the annotation vector (feature vector) for the input word at time step `t'`.
+
+## Output Generation
+- A **unidirectional RNN** generates the output translation one word at a time.
+- At each time step `t`, the RNN uses:
+  - The previous hidden state `s(t-1)`.
+  - A context vector `c(t)`, computed using attention.
+
+## Attention Weights
+- Define `α(t, t')` as the **attention weight**: how much output word `y(t)` should attend to input annotation `a(t')`.
+- Attention weights are:
+  - Non-negative.
+  - Sum to 1 (for each output time step `t`).
+
+## Context Vector Computation
+- At time step `t`, the context vector `c(t)` is computed as:
+  ```
+  c(t) = Σ over t' of α(t, t') * a(t')
+  ```
+- Weighted sum of all input annotations `a(t')`, using attention weights `α(t, t')`.
+
+## Computing Attention Weights
+- Use a small neural network to compute intermediate scores `e(t, t')`:
+  - Inputs:
+    - `s(t-1)` - Hidden state from previous decoder time step.
+    - `a(t')` - Input annotation at position `t'`.
+  - Output: `e(t, t')` - Raw attention score.
+- Apply **softmax** over `e(t, t')` values for fixed `t` to get normalized attention weights:
+  ```
+  α(t, t') = softmax(e(t, t'))
+  ```
+
+## Why This Works
+- `s(t-1)` contains information about what the model has generated so far.
+- `a(t')` contains information about each input word.
+- Neural network learns how to combine these using backpropagation.
+
+##  Training
+- Entire model (encoder + attention + decoder) is trained end-to-end using gradient descent.
+- The attention mechanism automatically learns **where to focus** for each word being generated.
+
+## Computational Cost
+- Time complexity is **O(Tx * Ty)** where:
+  - `Tx`: length of input sequence.
+  - `Ty`: length of output sequence.
+- Quadratic cost is usually acceptable in practice for translation tasks with short to medium sequences.
+
+## Applications Beyond Translation
+- Attention is also used in:
+  - **Image captioning**: Focus on different regions of an image while generating each word.
+    - See work by Kevin Chu et al. (Bengio et al.)
+  - **Date normalization task** :
+    - Input: various date formats (e.g., `"April 20 1969"`).
+    - Output: normalized date (e.g., `"1969-04-20"`).
+    - Model uses attention to focus on parts of the date string.
+
+## 🔍 Visualizing Attention
+- Attention weights `α(t, t')` can be visualized as a heatmap:
+  - Rows: Output words.
+  - Columns: Input words.
+  - Brightness indicates weight magnitude.
+- Helps interpret model behavior—shows it often aligns with intuitive word correspondences.
+
+
+
+
