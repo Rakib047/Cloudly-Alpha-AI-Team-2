@@ -611,7 +611,8 @@
 
 ## Visualization
 
-[t-sne]
+![t-sne](https://github.com/user-attachments/assets/565d37d3-b2f4-42ce-85ba-37b11f0e4c42)
+
 - High-dimensional embeddings (e.g., 300D) can be **projected to 2D** using algorithms like **t-SNE** (by van der Maaten & Hinton).
 - Visualizations show:
   - Similar words cluster together (e.g., fruits, animals, people).
