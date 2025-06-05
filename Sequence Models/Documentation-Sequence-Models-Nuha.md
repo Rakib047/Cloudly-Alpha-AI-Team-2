@@ -392,7 +392,8 @@
 - `⊙` denotes element-wise multiplication.
 
 ---
-[lstmm]
+![lstmm](https://github.com/user-attachments/assets/fe4d267b-3292-4d82-b127-0267b7099b90)
+
 - All gates computed from `aₜ₋₁` and `xₜ`.
 - These values (γ_f, γ_u, γ_o, c̃ₜ) are combined to update `cₜ` and generate `aₜ`.
 - Memory `cₜ` can retain values across many time steps if gates are set appropriately.
